@@ -1,0 +1,142 @@
+{
+  "perfil": {
+    "nome": "SC Run Club",
+    "handle": "@sc.runclub",
+    "subtitulo": "Treino • Reabilitação • Nutrição",
+    "bio": "Equipe de performance local: treino, reabilitação e nutrição para corredores — encontros semanais e suporte contínuo.",
+    "avatar": "/assets/logo.svg",
+    "hero": "",
+    "heroAlt": "Grupo do SC Run Club em treino no amanhecer"
+  },
+
+  "destaque": {
+    "ativo": true,
+    "texto": "Próximo encontro: sábado, 07:30 — Rua Salete Broering Becker",
+    "href": "#cards"
+  },
+
+  "encontro": {
+    "diaSemana": "Todos os sábados",
+    "horario": "07:30",
+    "endereco": "Rua Salete Broering Becker, Santo Amaro da Imperatriz",
+    "mapsUrl": "https://maps.google.com/?q=Rua+Salete+Broering+Becker,+Santo+Amaro+da+Imperatriz",
+    "observacao": "Inscreva-se para o próximo encontro; a data é divulgada no grupo do WhatsApp."
+  },
+
+  "sociais": [
+    { "id": "instagram", "label": "Instagram", "href": "https://www.instagram.com/sc.runclub/", "icone": "instagram" },
+    { "id": "strava", "label": "Strava", "href": "https://www.strava.com/clubs/2201431", "icone": "strava" },
+    { "id": "email", "label": "E-mail", "href": "mailto:TROCAR_EMAIL", "icone": "mail" }
+  ],
+
+  "atalhos": [
+    { "label": "Instagram", "href": "https://www.instagram.com/sc.runclub/", "evento": "click_instagram" },
+    { "label": "Ponto de encontro", "href": "https://maps.google.com/?q=Rua+Salete+Broering+Becker,+Santo+Amaro+da+Imperatriz", "evento": "click_maps" },
+    { "label": "Sábados 07:30", "href": "#cards", "evento": "click_horario" }
+  ],
+
+  "cards": [
+    {
+      "id": "primeira-vez",
+      "titulo": "Primeira vez aqui?",
+      "descricao": "Guia rápido: chega 10 min antes, roupa leve e tênis de corrida. O resto é por nossa conta.",
+      "cta": "Eu quero",
+      "tipo": "modal",
+      "modal": "guia",
+      "icone": "/assets/logo.svg"
+    },
+    {
+      "id": "programas",
+      "titulo": "Programas",
+      "descricao": "Treino de base, grupos por ritmo e acompanhamento contínuo pra evoluir sem se machucar.",
+      "cta": "Entrar",
+      "tipo": "modal",
+      "modal": "programas",
+      "icone": "/assets/logo.svg"
+    },
+    {
+      "id": "reservar",
+      "titulo": "Reserve seu treino",
+      "descricao": "Treino, avaliação física ou consulta. A gente confirma por WhatsApp.",
+      "cta": "Reservar",
+      "tipo": "form",
+      "icone": "/assets/logo.svg"
+    },
+    {
+      "id": "unidades",
+      "titulo": "Unidades",
+      "descricao": "Onde a gente treina em Santo Amaro da Imperatriz.",
+      "cta": "Acessar",
+      "tipo": "modal",
+      "modal": "unidades",
+      "icone": "/assets/logo.svg"
+    },
+    {
+      "id": "franquia",
+      "titulo": "Franquia / Parcerias",
+      "descricao": "Quer levar o clube pra tua cidade ou apoiar o projeto? Fala com a gente.",
+      "cta": "Quero saber",
+      "tipo": "form",
+      "formVariante": "parceria",
+      "icone": "/assets/logo.svg"
+    },
+    {
+      "id": "comunidade",
+      "titulo": "SC Run Club — Comunidade",
+      "descricao": "Grupo do WhatsApp, clube no Strava e inscrição no próximo encontro.",
+      "cta": "Entrar",
+      "tipo": "modal",
+      "modal": "comunidade",
+      "icone": "/assets/logo.svg"
+    }
+  ],
+
+  "unidades": [
+    {
+      "nome": "Ponto de encontro — Rua Salete Broering Becker",
+      "detalhe": "Sábados, 07:30 · Santo Amaro da Imperatriz",
+      "mapsUrl": "https://maps.google.com/?q=Rua+Salete+Broering+Becker,+Santo+Amaro+da+Imperatriz"
+    }
+  ],
+
+  "comunidade": {
+    "whatsapp": "https://chat.whatsapp.com/HPYxeoswQMVCVlk2EjRVwb?s=sh&p=i&ilr=2&amv=2",
+    "strava": "https://www.strava.com/clubs/2201431"
+  },
+
+  "formulario": {
+    "niveis": ["Caminhada", "Corro e caminho", "Corro sem parar"],
+    "servicos": ["Encontro do sábado", "Treino personalizado", "Avaliação física", "Consulta de reabilitação", "Orientação nutricional"],
+    "consentimento": "Autorizo contato via WhatsApp e li a Política de Privacidade.",
+    "sucesso": "Inscrição recebida — confirmaremos por WhatsApp em até 24h.",
+    "erro": "Não deu pra enviar agora. Tenta de novo ou chama no WhatsApp."
+  },
+
+  "guia": {
+    "titulo": "Primeira vez? É tranquilo.",
+    "itens": [
+      "Chega 10 minutos antes das 07:30 pra gente largar junto.",
+      "Tênis de corrida e roupa leve. Boné e protetor solar ajudam.",
+      "Não precisa levar nada: tem fruta, água e café por nossa conta.",
+      "Cada um no seu ritmo — do caminhar ao voar. Ninguém fica pra trás."
+    ]
+  },
+
+  "programas": {
+    "titulo": "Programas",
+    "itens": [
+      { "nome": "Encontro semanal", "detalhe": "Gratuito, todos os sábados às 07:30. Grupos por ritmo." },
+      { "nome": "Treino guiado", "detalhe": "Planilha e acompanhamento pra quem quer evoluir com constância." },
+      { "nome": "Reabilitação e prevenção", "detalhe": "Avaliação e retorno seguro pra quem está lesionado." },
+      { "nome": "Nutrição esportiva", "detalhe": "Orientação alimentar aplicada à corrida." }
+    ]
+  },
+
+  "footer": {
+    "copyright": "© 2026 SC Run Club · Santo Amaro da Imperatriz",
+    "privacidade": "/privacidade.html",
+    "contato": "mailto:TROCAR_EMAIL"
+  },
+
+  "analytics": { "ga4": "G-TROCAR" }
+}
