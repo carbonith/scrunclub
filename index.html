@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SC Run Club — Corrida em Santo Amaro da Imperatriz</title>
+<meta name="description" content="Equipe de performance local: treino, reabilitação e nutrição para corredores. Encontros todos os sábados às 07:30 em Santo Amaro da Imperatriz.">
+<meta name="theme-color" content="#0B0A07">
+<link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/logo-512.png">
+<meta property="og:title" content="SC Run Club">
+<meta property="og:description" content="Treino, reabilitação e nutrição para corredores. Sábados, 07:30.">
+<meta property="og:image" content="/assets/og.webp">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" media="print" onload="this.media='all'">
+
+<style>
+/* CSS crítico: evita FOUC no primeiro paint */
+:root{--core-black:#0B0A07;--surface:#141210;--surface-2:#1C1916;--matte-gold:#C9A227;--gold-soft:#E3C463;--cloud-white:#FEFEFE;--muted:#A39C90;--radius:18px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--core-black);color:var(--cloud-white);font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:500px;margin:0 auto;padding:28px 18px 56px}
+.skeleton{min-height:60vh}
+</style>
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<a class="skip" href="#cards">Ir para os links</a>
+
+<div class="wrap">
+
+  <!-- Destaque / notificação topo -->
+  <a class="notice" id="notice" hidden></a>
+
+  <!-- Topo do perfil -->
+  <header class="profile">
+    <img class="avatar" id="avatar" src="/assets/logo.svg" width="96" height="96"
+         alt="Logo do SC Run Club" fetchpriority="high">
+    <h1 class="name">SC Run Club</h1>
+    <p class="subtitle" id="subtitle">Treino • Reabilitação • Nutrição</p>
+    <p class="bio" id="bio"></p>
+    <nav class="socials" id="socials" aria-label="Redes sociais"></nav>
+  </header>
+
+  <!-- Hero opcional -->
+  <figure class="hero" id="hero" hidden>
+    <img id="heroImg" src="" alt="" loading="lazy" width="500" height="280">
+  </figure>
+
+  <!-- Atalhos -->
+  <nav class="pills" id="pills" aria-label="Atalhos"></nav>
+
+  <!-- Cards -->
+  <main id="cards" class="cards skeleton" aria-live="polite"></main>
+
+  <footer class="foot">
+    <p id="copyright"></p>
+    <p>
+      <a id="linkPriv" href="/privacidade.html">Política de Privacidade</a>
+      <span aria-hidden="true"> · </span>
+      <a id="linkContato" href="#">Contato</a>
+    </p>
+  </footer>
+</div>
+
+<!-- ============ MODAL GENÉRICO ============ -->
+<div class="overlay" id="overlay" hidden>
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" id="sheet">
+    <button class="close" id="closeBtn" aria-label="Fechar">&times;</button>
+    <h2 id="sheetTitle"></h2>
+    <div id="sheetBody"></div>
+  </div>
+</div>
+
+<!-- ============ TEMPLATE: FORMULÁRIO DE RESERVA ============ -->
+<template id="tplForm">
+  <form class="form" novalidate>
+    <p class="hint" data-hint></p>
+
+    <label for="f-nome">Nome completo <span aria-hidden="true">*</span></label>
+    <input id="f-nome" name="nome" type="text" autocomplete="name" required minlength="2" placeholder="Teu nome">
+
+    <label for="f-fone">WhatsApp <span aria-hidden="true">*</span></label>
+    <input id="f-fone" name="telefone" type="tel" inputmode="tel" autocomplete="tel"
+           required placeholder="(48) 90000-0000" aria-describedby="f-fone-help">
+    <small id="f-fone-help" class="help">Com DDD. É por aqui que confirmamos.</small>
+
+    <label for="f-nivel">Como tu vai hoje?</label>
+    <select id="f-nivel" name="nivel"></select>
+
+    <label for="f-servico">Serviço</label>
+    <select id="f-servico" name="servico"></select>
+
+    <label for="f-unidade">Unidade / preferência</label>
+    <input id="f-unidade" name="unidade" type="text" placeholder="Ex.: ponto de encontro do sábado">
+
+    <label for="f-obs">Observações</label>
+    <textarea id="f-obs" name="observacoes" rows="3" placeholder="Lesão, objetivo, dúvida…"></textarea>
+
+    <!-- honeypot anti-spam -->
+    <div class="hp" aria-hidden="true">
+      <label for="f-hp">Não preencha isto:</label>
+      <input id="f-hp" name="_gotcha" type="text" tabindex="-1" autocomplete="off">
+    </div>
+
+    <label class="check">
+      <input type="checkbox" name="consentimento" required>
+      <span data-consent></span>
+    </label>
+
+    <button class="btn" type="submit">Confirmar presença 🙌</button>
+    <p class="status" role="status" data-status></p>
+  </form>
+</template>
+
+<script defer src="/app.js"></script>
+<!-- reCAPTCHA v3 (opcional): descomente e troque a chave
+<script defer src="https://www.google.com/recaptcha/api.js?render=SUA_SITE_KEY"></script> -->
+</body>
+</html>
