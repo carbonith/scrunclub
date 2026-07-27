@@ -1,0 +1,43 @@
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+
+[[headers]]
+  for = "/_data/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[redirects]]
+  from = "/whatsapp"
+  to = "https://chat.whatsapp.com/HPYxeoswQMVCVlk2EjRVwb?s=sh&p=i&ilr=2&amv=2"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/strava"
+  to = "https://www.strava.com/clubs/2201431"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/instagram"
+  to = "https://www.instagram.com/sc.runclub/"
+  status = 302
+  force = true
