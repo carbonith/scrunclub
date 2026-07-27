@@ -98,6 +98,8 @@ a:hover{text-decoration:underline}
 .overlay{position:fixed;inset:0;z-index:40;background:rgba(0,0,0,.72);
   display:flex;align-items:flex-end;justify-content:center;padding:0;backdrop-filter:blur(3px)}
 @media (min-width:560px){.overlay{align-items:center;padding:24px}}
+/* Respeita o atributo hidden: sem esta regra o display:flex acima vence o [hidden]{display:none} do navegador e o modal fica preso sobre a pagina. */
+.overlay[hidden]{display:none}
 .sheet{
   position:relative;width:100%;max-width:500px;max-height:90vh;overflow-y:auto;
   background:var(--surface);border:1px solid var(--line);
