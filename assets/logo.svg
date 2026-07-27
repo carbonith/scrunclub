@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="SC Run Club">
+  <title>SC Run Club</title>
+  <rect width="512" height="512" rx="120" fill="#0B0A07"/>
+  <g fill="#C9A227">
+    <polygon points="96,332 168,180 208,180 136,332"/>
+    <polygon points="168,332 240,180 280,180 208,332"/>
+    <polygon points="240,332 312,180 352,180 280,332"/>
+  </g>
+  <g fill="#FEFEFE" font-family="Helvetica, Arial, sans-serif" font-weight="700" font-size="118">
+    <text x="352" y="316">SC</text>
+  </g>
+  <rect x="96" y="368" width="320" height="14" rx="7" fill="#C9A227"/>
+</svg>
