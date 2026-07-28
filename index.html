@@ -1,123 +1,538 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SC Run Club — Corrida em Santo Amaro da Imperatriz</title>
-<meta name="description" content="Equipe de performance local: treino, reabilitação e nutrição para corredores. Encontros todos os sábados às 07:30 em Santo Amaro da Imperatriz.">
-<meta name="theme-color" content="#0B0A07">
-<link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/assets/logo-512.png">
-<meta property="og:title" content="SC Run Club">
-<meta property="og:description" content="Treino, reabilitação e nutrição para corredores. Sábados, 07:30.">
-<meta property="og:image" content="/assets/og.webp">
-<meta property="og:type" content="website">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SC Run Club | Clube de corrida de Santo Amaro da Imperatriz</title>
+  <meta name="description" content="Treino coletivo gratuito todo sábado às 07h30 em Santo Amaro da Imperatriz. Todos os níveis. Ninguém corre sozinho." />
+  <link rel="icon" type="image/png" href="images/favicon.png" />
 
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" media="print" onload="this.media='all'">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="SC Run Club" />
+  <meta property="og:title" content="SC Run Club | Clube de corrida de Santo Amaro da Imperatriz" />
+  <meta property="og:description" content="Treino coletivo gratuito todo sábado às 07h30 em Santo Amaro da Imperatriz. Todos os níveis. Ninguém corre sozinho." />
+  <meta property="og:url" content="https://scrunclub.netlify.app/" />
+  <meta property="og:image" content="https://scrunclub.netlify.app/images/og.webp" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="SC Run Club | Clube de corrida de Santo Amaro da Imperatriz" />
+  <meta name="twitter:description" content="Treino coletivo gratuito todo sábado às 07h30 em Santo Amaro da Imperatriz. Todos os níveis. Ninguém corre sozinho." />
+  <meta name="twitter:image" content="https://scrunclub.netlify.app/images/og.webp" />
 
-<style>
-/* CSS crítico: evita FOUC no primeiro paint */
-:root{--core-black:#0B0A07;--surface:#141210;--surface-2:#1C1916;--matte-gold:#C9A227;--gold-soft:#E3C463;--cloud-white:#FEFEFE;--muted:#A39C90;--radius:18px}
-*{box-sizing:border-box}
-body{margin:0;background:var(--core-black);color:var(--cloud-white);font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
-.wrap{max-width:500px;margin:0 auto;padding:28px 18px 56px}
-.skeleton{min-height:60vh}
-</style>
-<link rel="stylesheet" href="/styles.css">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Schema.org SportsClub -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SportsClub",
+    "name": "SC Run Club",
+    "sport": "Running",
+    "url": "https://scrunclub.netlify.app/",
+    "description": "Clube de corrida de Santo Amaro da Imperatriz. Treino coletivo gratuito todo sábado às 07h30.",
+    "sameAs": ["https://www.instagram.com/sc.clubrun/"],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Rua Salete Becker",
+      "addressLocality": "Santo Amaro da Imperatriz",
+      "addressRegion": "SC",
+      "addressCountry": "BR"
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Saturday",
+      "opens": "07:30"
+    }
+  }
+  </script>
 </head>
 <body>
 
-<a class="skip" href="#cards">Ir para os links</a>
-
-<div class="wrap">
-
-  <!-- Destaque / notificação topo -->
-  <a class="notice" id="notice" hidden></a>
-
-  <!-- Topo do perfil -->
-  <header class="profile">
-    <img class="avatar" id="avatar" src="/assets/logo.svg" width="96" height="96"
-         alt="Logo do SC Run Club" fetchpriority="high">
-    <h1 class="name">SC Run Club</h1>
-    <p class="subtitle" id="subtitle">Treino • Reabilitação • Nutrição</p>
-    <p class="bio" id="bio"></p>
-    <nav class="socials" id="socials" aria-label="Redes sociais"></nav>
+  <!-- ============ HEADER ============ -->
+  <header class="header" id="topo">
+    <div class="container">
+      <a class="brand" href="#topo" aria-label="SC Run Club, página inicial">
+        <img src="images/logo.webp" alt="SC Run Club, Santo Amaro da Imperatriz, Santa Catarina" width="200" height="52" />
+      </a>
+      <nav class="nav" aria-label="Navegação principal">
+        <a href="#sabado">Sábado</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#time">Time</a>
+        <!-- <a href="#depoimentos">Depoimentos</a> -->
+        <a href="#faq">FAQ</a>
+        <a href="#contato">Contato</a>
+      </nav>
+      <a class="btn btn--gold header-cta" href="#quiz">Quero participar</a>
+      <button class="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </header>
 
-  <!-- Hero opcional -->
-  <figure class="hero" id="hero" hidden>
-    <img id="heroImg" src="" alt="" loading="lazy" width="500" height="280">
-  </figure>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Navegação mobile">
+    <a href="#sabado">Sábado</a>
+    <a href="#sobre">Sobre</a>
+    <a href="#servicos">Serviços</a>
+    <a href="#time">Time</a>
+    <!-- <a href="#depoimentos">Depoimentos</a> -->
+    <a href="#faq">FAQ</a>
+    <a href="#contato">Contato</a>
+    <a class="btn btn--gold" href="#quiz">Quero participar</a>
+  </nav>
 
-  <!-- Atalhos -->
-  <nav class="pills" id="pills" aria-label="Atalhos"></nav>
-
-  <!-- Cards -->
-  <main id="cards" class="cards skeleton" aria-live="polite"></main>
-
-  <footer class="foot">
-    <p id="copyright"></p>
-    <p>
-      <a id="linkPriv" href="/privacidade.html">Política de Privacidade</a>
-      <span aria-hidden="true"> · </span>
-      <a id="linkContato" href="#">Contato</a>
-    </p>
-  </footer>
-</div>
-
-<!-- ============ MODAL GENÉRICO ============ -->
-<div class="overlay" id="overlay" hidden>
-  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" id="sheet">
-    <button class="close" id="closeBtn" aria-label="Fechar">&times;</button>
-    <h2 id="sheetTitle"></h2>
-    <div id="sheetBody"></div>
-  </div>
-</div>
-
-<!-- ============ TEMPLATE: FORMULÁRIO DE RESERVA ============ -->
-<template id="tplForm">
-  <form class="form" novalidate>
-    <p class="hint" data-hint></p>
-
-    <label for="f-nome">Nome completo <span aria-hidden="true">*</span></label>
-    <input id="f-nome" name="nome" type="text" autocomplete="name" required minlength="2" placeholder="Teu nome">
-
-    <label for="f-fone">WhatsApp <span aria-hidden="true">*</span></label>
-    <input id="f-fone" name="telefone" type="tel" inputmode="tel" autocomplete="tel"
-           required placeholder="(48) 90000-0000" aria-describedby="f-fone-help">
-    <small id="f-fone-help" class="help">Com DDD. É por aqui que confirmamos.</small>
-
-    <label for="f-nivel">Como tu vai hoje?</label>
-    <select id="f-nivel" name="nivel"></select>
-
-    <label for="f-servico">Serviço</label>
-    <select id="f-servico" name="servico"></select>
-
-    <label for="f-unidade">Unidade / preferência</label>
-    <input id="f-unidade" name="unidade" type="text" placeholder="Ex.: ponto de encontro do sábado">
-
-    <label for="f-obs">Observações</label>
-    <textarea id="f-obs" name="observacoes" rows="3" placeholder="Lesão, objetivo, dúvida…"></textarea>
-
-    <!-- honeypot anti-spam -->
-    <div class="hp" aria-hidden="true">
-      <label for="f-hp">Não preencha isto:</label>
-      <input id="f-hp" name="_gotcha" type="text" tabindex="-1" autocomplete="off">
+  <main>
+  <!-- ============ HERO ============ -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="container">
+      <span class="badge">GRATUITO • TODO SÁBADO • 07H30</span>
+      <h1 id="hero-title">NINGUÉM CORRE SOZINHO.</h1>
+      <p class="hero__sub">O primeiro clube de corrida de Santo Amaro da Imperatriz. Todo sábado, às 07h30.</p>
+      <div class="hero__actions">
+        <a class="btn btn--gold" href="#quiz">Quero participar</a>
+        <a class="btn btn--outline" href="#sabado">Ver como funciona</a>
+      </div>
     </div>
+  </section>
 
-    <label class="check">
-      <input type="checkbox" name="consentimento" required>
-      <span data-consent></span>
-    </label>
+  <!-- ============ O SÁBADO ============ -->
+  <section class="section section--alt" id="sabado" aria-labelledby="sabado-title">
+    <div class="container">
+      <div class="reveal">
+        <p class="eyebrow">O sábado</p>
+        <h2 id="sabado-title">Como é o nosso sábado</h2>
+        <p class="lead">Todo sábado às 07h30 a gente se encontra no mesmo lugar. Aquece junto, corre no seu ritmo e fica para o café.</p>
+      </div>
+      <div class="grid-2 reveal">
+        <div class="feature">
+          <span class="feature__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+          <h3>07h30, aquecimento junto</h3>
+          <p>Ninguém sai correndo sozinho antes da hora. O aquecimento é coletivo.</p>
+        </div>
+        <div class="feature">
+          <span class="feature__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.4"/><path d="M4 19c0-2.8 2.2-5 5-5s5 2.2 5 5"/><path d="M15 19c0-2 1-3.6 3-4"/></svg></span>
+          <h3>Grupos por nível</h3>
+          <p>A gente separa as pessoas por ritmo, então você corre com quem está no seu passo. Quem já tem treino próprio faz o dele junto com a turma.</p>
+        </div>
+        <div class="feature">
+          <span class="feature__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4l-2 6h4l-3 10"/><path d="M5 12h3"/><path d="M16 8h3"/></svg></span>
+          <h3>Cerca de 30 minutos de corrida</h3>
+          <p>O suficiente para quem está começando e para quem já roda há anos.</p>
+        </div>
+        <div class="feature">
+          <span class="feature__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h13v4a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z"/><path d="M17 11h2a2 2 0 0 1 0 4h-2"/><path d="M8 4v2M11 4v2"/></svg></span>
+          <h3>Café e frutas na tenda</h3>
+          <p>Terminou o treino, tem estrutura montada esperando. Boa parte do clube acontece aqui.</p>
+        </div>
+      </div>
 
-    <button class="btn" type="submit">Confirmar presença 🙌</button>
-    <p class="status" role="status" data-status></p>
-  </form>
-</template>
+      <div class="local reveal">
+        <span class="local__label">O ponto de encontro</span>
+        <strong>Rua Salete Becker, Santo Amaro da Imperatriz, SC.</strong>
+        <span>Em frente ao terreno da nova prefeitura.</span>
+        <a class="btn btn--ghost" href="https://www.google.com/maps/search/?api=1&query=Rua+Salete+Becker,+Santo+Amaro+da+Imperatriz,+SC" target="_blank" rel="noopener">Abrir no Google Maps</a>
+      </div>
 
-<script defer src="/app.js"></script>
-<!-- reCAPTCHA v3 (opcional): descomente e troque a chave
-<script defer src="https://www.google.com/recaptcha/api.js?render=SUA_SITE_KEY"></script> -->
+      <p class="closing reveal">Não tem taxa, não tem mensalidade, não tem nível mínimo. Só chegar.</p>
+    </div>
+  </section>
+
+  <!-- ============ SOBRE ============ -->
+  <section class="section" id="sobre" aria-labelledby="sobre-title">
+    <div class="container about">
+      <div class="about__text reveal">
+        <p class="eyebrow">Sobre</p>
+        <h2 id="sobre-title">O clube</h2>
+        <p>O SC Run Club nasceu porque Santo Amaro da Imperatriz tem corredor, mas não tinha clube. Muita gente correndo sozinha, na mesma rua, no mesmo horário, sem se conhecer.</p>
+        <p>A ideia é simples: juntar essas pessoas. O sábado é gratuito e aberto, do corredor de primeira vez a quem treina para maratona. A regra é uma só, ninguém fica para trás.</p>
+        <p>Por trás do clube tem um time de treinador, fisioterapeuta e nutricionista. Não para vender nada no sábado, mas para que quem quiser ir além tenha para onde ir.</p>
+      </div>
+      <!-- SUBSTITUIR: foto do grupo correndo. Enquanto não houver, logo sobre fundo texturizado. -->
+      <div class="media-fallback reveal" role="img" aria-label="SC Run Club">
+        <img src="images/logo.webp" alt="SC Run Club" loading="lazy" width="340" height="88" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MISSÃO, VISÃO, VALORES ============ -->
+  <section class="section section--alt2" aria-labelledby="mvv-title">
+    <div class="container">
+      <h2 id="mvv-title" class="reveal" style="margin-bottom:26px;">Missão, visão e valores</h2>
+      <div class="cards-3 reveal">
+        <div class="card">
+          <h3>Missão</h3>
+          <p>Reunir as pessoas de Santo Amaro da Imperatriz em volta da corrida, para que ninguém precise correr sozinho.</p>
+        </div>
+        <div class="card">
+          <h3>Visão</h3>
+          <p>Ser o ponto de encontro dos corredores da cidade, do primeiro 3K à primeira maratona.</p>
+        </div>
+        <div class="card">
+          <h3>Valores</h3>
+          <p>Comunidade antes de performance. Correr junto, fazer amigos e se divertir usando o esporte, acolhendo todos os níveis.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ COMO FUNCIONA ============ -->
+  <section class="section" aria-labelledby="como-title">
+    <div class="container">
+      <p class="eyebrow reveal">Passo a passo</p>
+      <h2 id="como-title" class="reveal">Como funciona</h2>
+      <div class="steps reveal" style="margin-top:26px;">
+        <div class="step">
+          <span class="step__num">01</span>
+          <div><h3>Preencha sua inscrição</h3><p>Leva menos de um minuto e serve para a gente te encaixar no grupo certo.</p></div>
+        </div>
+        <div class="step">
+          <span class="step__num">02</span>
+          <div><h3>Chegue no sábado, 07h30</h3><p>Rua Salete Becker. Vem de tênis, garrafa de água e disposição.</p></div>
+        </div>
+        <div class="step">
+          <span class="step__num">03</span>
+          <div><h3>Corra e fique para o café</h3><p>Você corre com gente do seu nível e depois fica na tenda com a turma.</p></div>
+        </div>
+      </div>
+      <div class="center-cta reveal">
+        <a class="btn btn--gold" href="#quiz">Quero participar</a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- ============ QUIZ ============ -->
+  <section class="quiz-section" id="quiz" aria-labelledby="quiz-title">
+    <div class="container">
+      <p class="eyebrow reveal" style="text-align:center;">Inscrição</p>
+      <h2 id="quiz-title" class="reveal" style="text-align:center; margin-bottom:24px;">Garanta seu lugar no sábado</h2>
+      <div class="quiz reveal">
+        <div class="quiz__progress" aria-hidden="true"><div class="quiz__bar"></div></div>
+        <form id="quiz-form" name="inscricao" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="quiz__inner">
+          <input type="hidden" name="form-name" value="inscricao" />
+          <p class="hp" aria-hidden="true"><label>Não preencha: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+
+          <p class="quiz__count" aria-live="polite"></p>
+
+          <!-- Tela 1: nome -->
+          <div class="quiz__screen is-active">
+            <h2 class="quiz__q">Qual é o seu nome completo?</h2>
+            <div class="field">
+              <label for="q-nome">Nome completo</label>
+              <input type="text" id="q-nome" name="nome" autocomplete="name" required />
+            </div>
+            <p class="quiz__error" role="alert"></p>
+            <div class="quiz__nav">
+              <button type="button" class="btn btn--ghost quiz__back">Voltar</button>
+              <button type="button" class="btn btn--gold" data-next>Continuar</button>
+            </div>
+          </div>
+
+          <!-- Tela 2: nascimento -->
+          <div class="quiz__screen">
+            <h2 class="quiz__q">Qual a sua data de nascimento?</h2>
+            <div class="field">
+              <label for="q-nascimento">Data de nascimento (dia/mês/ano)</label>
+              <input type="text" id="q-nascimento" name="nascimento" inputmode="numeric" placeholder="00/00/0000" autocomplete="bday" required />
+            </div>
+            <p class="quiz__warn" id="q-menor-warn">Menores de 18 anos precisam estar acompanhados de responsável no treino.</p>
+            <p class="quiz__error" role="alert"></p>
+            <div class="quiz__nav">
+              <button type="button" class="btn btn--ghost quiz__back">Voltar</button>
+              <button type="button" class="btn btn--gold" data-next>Continuar</button>
+            </div>
+          </div>
+
+          <!-- Tela 3: whatsapp -->
+          <div class="quiz__screen">
+            <h2 class="quiz__q">Qual o seu WhatsApp?</h2>
+            <div class="field">
+              <label for="q-telefone">WhatsApp</label>
+              <input type="tel" id="q-telefone" name="telefone" inputmode="numeric" placeholder="(00) 00000-0000" autocomplete="tel" required />
+            </div>
+            <p class="quiz__error" role="alert"></p>
+            <div class="quiz__nav">
+              <button type="button" class="btn btn--ghost quiz__back">Voltar</button>
+              <button type="button" class="btn btn--gold" data-next>Continuar</button>
+            </div>
+          </div>
+
+          <!-- Tela 4: nível -->
+          <div class="quiz__screen">
+            <h2 class="quiz__q">Qual o seu nível na corrida?</h2>
+            <div class="level-cards" role="radiogroup" aria-label="Seu nível na corrida">
+              <label class="level-card">
+                <input type="radio" name="nivel" value="Iniciante, 3K" />
+                <span class="level-card__t">Iniciante, 3K</span>
+                <span class="level-card__d">Estou começando agora ou voltando depois de um tempo parado.</span>
+              </label>
+              <label class="level-card">
+                <input type="radio" name="nivel" value="Intermediário, 5K" />
+                <span class="level-card__t">Intermediário, 5K</span>
+                <span class="level-card__d">Já corro com alguma regularidade e aguento 5K tranquilo.</span>
+              </label>
+              <label class="level-card">
+                <input type="radio" name="nivel" value="Avançado, 7K ou mais" />
+                <span class="level-card__t">Avançado, 7K ou mais</span>
+                <span class="level-card__d">Corro toda semana e tenho ritmo consolidado.</span>
+              </label>
+            </div>
+            <p class="quiz__error" role="alert"></p>
+            <div class="quiz__nav">
+              <button type="button" class="btn btn--ghost quiz__back">Voltar</button>
+              <button type="button" class="btn btn--gold" data-next>Continuar</button>
+            </div>
+          </div>
+
+          <!-- Tela 5: origem (opcional) -->
+          <div class="quiz__screen">
+            <h2 class="quiz__q">Como você conheceu o clube?</h2>
+            <p class="quiz__hint">Opcional.</p>
+            <div class="origem-opts">
+              <label><input type="radio" name="origem" value="Instagram" /> Instagram</label>
+              <label><input type="radio" name="origem" value="Indicação de amigo" /> Indicação de amigo</label>
+              <label><input type="radio" name="origem" value="Vi o pessoal correndo" /> Vi o pessoal correndo</label>
+              <label><input type="radio" name="origem" value="Outro" /> Outro</label>
+            </div>
+            <p class="quiz__error" role="alert"></p>
+            <div class="quiz__nav">
+              <button type="button" class="btn btn--ghost quiz__back">Voltar</button>
+              <button type="button" class="btn btn--gold" data-next>Enviar inscrição</button>
+            </div>
+          </div>
+
+          <!-- Tela final: confirmação -->
+          <div class="quiz__screen quiz__done">
+            <span class="check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>
+            <h2>Inscrição feita.</h2>
+            <p>Te esperamos no sábado, 07h30, na Rua Salete Becker.</p>
+            <div class="actions">
+              <a class="btn btn--gold" href="https://chat.whatsapp.com/HPYxeoswQMVCVlk2EjRVwb?s=sh&p=i&ilr=2&amv=2" target="_blank" rel="noopener">Entrar no grupo do WhatsApp</a>
+              <a class="btn btn--outline" href="https://www.google.com/maps/search/?api=1&query=Rua+Salete+Becker,+Santo+Amaro+da+Imperatriz,+SC" target="_blank" rel="noopener">Abrir no Google Maps</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+  
+  <!-- ============ SERVIÇOS ============ -->
+  <section class="section section--alt" id="servicos" aria-labelledby="servicos-title">
+    <div class="container">
+      <p class="eyebrow reveal">Serviços</p>
+      <h2 id="servicos-title" class="reveal">Quer ir além do sábado</h2>
+      <p class="lead reveal">O treino coletivo é e sempre vai ser gratuito. Para quem quer acompanhamento individual, o time do clube atende de forma independente.</p>
+      <div class="services-grid reveal">
+        <div class="service">
+          <h3>Assessoria de corrida</h3>
+          <span class="service__pro">com Reginaldo Abreu</span>
+          <p>Planilha individual, controle de ritmo e periodização, para você evoluir sem se quebrar no caminho.</p>
+          <a class="btn btn--ghost" href="#contato" data-servico="Assessoria de corrida">Tenho interesse</a>
+        </div>
+        <div class="service">
+          <h3>Fisioterapia esportiva</h3>
+          <span class="service__pro">com Mateus Pinheiro</span>
+          <p>Avaliação, prevenção e retorno seguro depois da lesão, para você não precisar parar de correr.</p>
+          <a class="btn btn--ghost" href="#contato" data-servico="Fisioterapia esportiva">Tenho interesse</a>
+        </div>
+        <div class="service">
+          <h3>Nutrição esportiva</h3>
+          <span class="service__pro">com Thiago Carboni</span>
+          <p>Estratégia alimentar para treino, prova e recuperação, montada em cima do seu volume real de corrida.</p>
+          <a class="btn btn--ghost" href="#contato" data-servico="Nutrição esportiva">Tenho interesse</a>
+        </div>
+      </div>
+      <p class="disclaimer reveal">Os serviços são opcionais e contratados diretamente com cada profissional. A participação no treino de sábado não depende deles.</p>
+    </div>
+  </section>
+  
+  <!-- ============ TIME ============ -->
+  <section class="section" id="time" aria-labelledby="time-title">
+    <div class="container">
+      <p class="eyebrow reveal">O time</p>
+      <h2 id="time-title" class="reveal">Quem está por trás</h2>
+      <div class="team reveal" style="margin-top:26px;">
+        <article class="member">
+          <!-- SUBSTITUIR: foto de Reginaldo Abreu (mesmo enquadramento dos demais) -->
+          <div class="member__photo"><div class="media-fallback" role="img" aria-label="Reginaldo Abreu"><img src="images/logo.webp" alt="SC Run Club" loading="lazy" width="180" height="47" /></div></div>
+          <div class="member__body">
+            <h3>Reginaldo Abreu</h3>
+            <p class="member__role">Treinador de corrida</p>
+          </div>
+        </article>
+        <article class="member">
+          <!-- SUBSTITUIR: foto de Mateus Pinheiro -->
+          <div class="member__photo"><div class="media-fallback" role="img" aria-label="Mateus Pinheiro"><img src="images/logo.webp" alt="SC Run Club" loading="lazy" width="180" height="47" /></div></div>
+          <div class="member__body">
+            <h3>Mateus Pinheiro</h3>
+            <p class="member__role">Fisioterapeuta esportivo</p>
+          </div>
+        </article>
+        <article class="member">
+          <!-- SUBSTITUIR: foto de Thiago Carboni -->
+          <div class="member__photo"><div class="media-fallback" role="img" aria-label="Thiago Carboni"><img src="images/logo.webp" alt="SC Run Club" loading="lazy" width="180" height="47" /></div></div>
+          <div class="member__body">
+            <h3>Thiago Carboni</h3>
+            <p class="member__role">Nutricionista esportivo, CRN10 14648</p>
+          </div>
+        </article>
+        <article class="member">
+          <!-- SUBSTITUIR: foto de André. PENDENTE: sobrenome e descrição de André (diretoria do clube). -->
+          <div class="member__photo"><div class="media-fallback" role="img" aria-label="André"><img src="images/logo.webp" alt="SC Run Club" loading="lazy" width="180" height="47" /></div></div>
+          <div class="member__body">
+            <h3>André</h3>
+            <p class="member__role">Diretoria do clube</p>
+            <!-- PENDENTE: sobrenome e linha de descrição de André -->
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+  
+  <!-- ============ DEPOIMENTOS ============ -->
+  <!-- Seção de depoimentos pronta em carrossel. Mantida COMENTADA até existirem depoimentos reais. Não inventar depoimentos.
+  <section class="section section--alt2" id="depoimentos" aria-labelledby="dep-title">
+    <div class="container">
+      <p class="eyebrow reveal">Depoimentos</p>
+      <h2 id="dep-title" class="reveal">O que dizem no clube</h2>
+      <div class="carousel reveal" data-carousel>
+        <button class="carousel__prev" aria-label="Anterior">&#8249;</button>
+        <div class="carousel__track">
+          <blockquote class="carousel__slide">
+            <p>[DEPOIMENTO PENDENTE]</p>
+            <cite>[NOME PENDENTE]</cite>
+          </blockquote>
+        </div>
+        <button class="carousel__next" aria-label="Próximo">&#8250;</button>
+        <div class="carousel__dots" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+  -->
+  
+  <!-- ============ FAQ ============ -->
+  <section class="section" id="faq" aria-labelledby="faq-title">
+    <div class="container">
+      <p class="eyebrow reveal" style="text-align:center;">Dúvidas</p>
+      <h2 id="faq-title" class="reveal" style="text-align:center; margin-bottom:30px;">Perguntas frequentes</h2>
+      <div class="faq reveal">
+        <div class="faq__item">
+          <button class="faq__q" aria-expanded="false" aria-controls="faq-1" id="faqb-1">Preciso pagar alguma coisa?</button>
+          <div class="faq__a" id="faq-1" role="region" aria-labelledby="faqb-1"><div>Não. O treino de sábado é gratuito, incluindo o café e as frutas depois. Não existe mensalidade nem taxa de inscrição.</div></div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__q" aria-expanded="false" aria-controls="faq-2" id="faqb-2">Nunca corri na vida, posso ir?</button>
+          <div class="faq__a" id="faq-2" role="region" aria-labelledby="faqb-2"><div>Pode e deve. Existe um grupo de iniciantes justamente para isso, com distância curta e ritmo de conversa.</div></div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__q" aria-expanded="false" aria-controls="faq-3" id="faqb-3">Preciso me inscrever antes ou posso só aparecer?</button>
+          <div class="faq__a" id="faq-3" role="region" aria-labelledby="faqb-3"><div>Preencha a inscrição pelo site. É rápido e serve para a gente organizar os grupos por nível antes do treino.</div></div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__q" aria-expanded="false" aria-controls="faq-4" id="faqb-4">Onde exatamente é o encontro?</button>
+          <div class="faq__a" id="faq-4" role="region" aria-labelledby="faqb-4"><div>Rua Salete Becker, Santo Amaro da Imperatriz, em frente ao terreno da nova prefeitura. Sempre no mesmo lugar, todo sábado às 07h30.</div></div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__q" aria-expanded="false" aria-controls="faq-5" id="faqb-5">O que eu preciso levar?</button>
+          <div class="faq__a" id="faq-5" role="region" aria-labelledby="faqb-5"><div>Tênis de corrida, roupa confortável e garrafa de água. O resto a gente resolve na tenda.</div></div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__q" aria-expanded="false" aria-controls="faq-6" id="faqb-6">E se chover?</button>
+          <div class="faq__a" id="faq-6" role="region" aria-labelledby="faqb-6"><div>Qualquer alteração de horário, local ou cancelamento é avisada no Instagram e no grupo do WhatsApp do clube.</div></div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__q" aria-expanded="false" aria-controls="faq-7" id="faqb-7">Preciso contratar treinador, fisioterapeuta ou nutricionista?</button>
+          <div class="faq__a" id="faq-7" role="region" aria-labelledby="faqb-7"><div>Não. Os serviços são totalmente opcionais e independentes do treino coletivo.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- ============ CONTATO ============ -->
+  <section class="section section--alt" id="contato" aria-labelledby="contato-title">
+    <div class="container">
+      <p class="eyebrow reveal">Contato</p>
+      <h2 id="contato-title" class="reveal">Fala com o clube</h2>
+      <div class="contact reveal" style="margin-top:24px;">
+        <div class="contact__info">
+          <div class="contact__block">
+            <p class="label">Instagram</p>
+            <a href="https://www.instagram.com/sc.clubrun/" target="_blank" rel="noopener">@sc.clubrun</a>
+          </div>
+          <div class="contact__block">
+            <p class="label">Grupo do WhatsApp</p>
+            <a href="https://chat.whatsapp.com/HPYxeoswQMVCVlk2EjRVwb?s=sh&p=i&ilr=2&amv=2" target="_blank" rel="noopener">Entrar no grupo do clube</a>
+          </div>
+          <div class="contact__block">
+            <p class="label">Local</p>
+            <span>Rua Salete Becker, Santo Amaro da Imperatriz, SC</span>
+          </div>
+        </div>
+        <form name="contato" method="POST" data-netlify="true" netlify-honeypot="bot-field-contato" class="contact__form">
+          <input type="hidden" name="form-name" value="contato" />
+          <p class="hp" aria-hidden="true"><label>Não preencha: <input name="bot-field-contato" tabindex="-1" autocomplete="off" /></label></p>
+          <div class="field">
+            <label for="c-nome">Nome</label>
+            <input type="text" id="c-nome" name="nome" autocomplete="name" required />
+          </div>
+          <div class="field">
+            <label for="c-whatsapp">WhatsApp</label>
+            <input type="tel" id="c-whatsapp" name="whatsapp" inputmode="numeric" placeholder="(00) 00000-0000" autocomplete="tel" required />
+          </div>
+          <div class="field">
+            <label for="contato-assunto">Assunto</label>
+            <select id="contato-assunto" name="assunto">
+              <option>Dúvida sobre o treino</option>
+              <option>Assessoria de corrida</option>
+              <option>Fisioterapia esportiva</option>
+              <option>Nutrição esportiva</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="c-mensagem">Mensagem</label>
+            <textarea id="c-mensagem" name="mensagem"></textarea>
+          </div>
+          <button type="submit" class="btn btn--gold btn--block">Enviar mensagem</button>
+        </form>
+      </div>
+    </div>
+  </section>
+  </main>
+  
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div>
+        <img class="flogo" src="images/logo.webp" alt="SC Run Club, Santo Amaro da Imperatriz, Santa Catarina" width="200" height="52" loading="lazy" />
+      </div>
+      <nav aria-label="Navegação do rodapé">
+        <a href="#sabado">Sábado</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#faq">FAQ</a>
+        <a href="#quiz">Quero participar</a>
+      </nav>
+      <div class="footer__links">
+        <p><a href="https://www.instagram.com/sc.clubrun/" target="_blank" rel="noopener">Instagram @sc.clubrun</a></p>
+        <p><a href="https://chat.whatsapp.com/HPYxeoswQMVCVlk2EjRVwb?s=sh&p=i&ilr=2&amv=2" target="_blank" rel="noopener">Grupo do WhatsApp</a></p>
+      </div>
+    </div>
+    <div class="container footer__copy">© 2026 SC Run Club. Santo Amaro da Imperatriz, SC.</div>
+  </footer>
+  
+  <!-- ============ WHATSAPP FLUTUANTE (convite de grupo) ============ -->
+  <a class="wa-float" href="https://chat.whatsapp.com/HPYxeoswQMVCVlk2EjRVwb?s=sh&p=i&ilr=2&amv=2" target="_blank" rel="noopener" aria-label="Entrar no grupo do WhatsApp do clube">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.6.1a6.6 6.6 0 0 1-3.2-2.8c-.2-.4.2-.4.6-1.2.1-.2 0-.4 0-.5s-.6-1.4-.8-1.9-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3A2.9 2.9 0 0 0 5.9 9c0 1.7 1.2 3.4 1.4 3.6s2.4 3.7 5.9 5c2.3.8 2.3.5 2.7.5s1.4-.6 1.6-1.1.2-1 .1-1.1-.3-.2-.6-.3z"/></svg>
+    <span>Entrar no grupo</span>
+  </a>
+  <script src="js/main.js" defer></script>
 </body>
 </html>
