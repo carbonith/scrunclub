@@ -20,6 +20,7 @@
   var burger = document.querySelector(".burger");
   var mobileNav = document.querySelector(".mobile-nav");
   function closeMenu(){
+    if (!burger) return;
     burger.setAttribute("aria-expanded","false");
     mobileNav.classList.remove("is-open");
     document.body.style.overflow = "";
@@ -95,7 +96,7 @@
   var screens = Array.prototype.slice.call(quiz.querySelectorAll(".quiz__screen"));
   var bar = quiz.querySelector(".quiz__bar");
   var countEl = quiz.querySelector(".quiz__count");
-  var backBtn = quiz.querySelector(".quiz__back");
+  var backButtons = Array.prototype.slice.call(quiz.querySelectorAll(".quiz__back"));
   var current = 0;
   var totalQuestions = screens.length - 1; // última tela é confirmação
   var advancing = false;
@@ -104,12 +105,15 @@
     screens.forEach(function(s, idx){
       s.classList.toggle("is-active", idx === i);
     });
+    // botão voltar: visível em todas as telas exceto a primeira e a de confirmação
+    backButtons.forEach(function(b){
+      if (i === 0 || i === totalQuestions) b.classList.remove("show");
+      else b.classList.add("show");
+    });
     current = i;
     var pct = (i / totalQuestions) * 100;
     if (pct > 100) pct = 100;
     bar.style.width = pct + "%";
-    if (i === 0) backBtn.classList.remove("show");
-    else backBtn.classList.add("show");
     if (i < totalQuestions){
       countEl.textContent = "Pergunta " + (i + 1) + " de " + totalQuestions;
       countEl.style.display = "";
@@ -177,6 +181,7 @@
     var radio = card.querySelector("input[type=radio]");
     card.setAttribute("tabindex","0");
     card.setAttribute("role","radio");
+    card.setAttribute("aria-checked","false");
     function select(){
       quiz.querySelectorAll(".level-card").forEach(function(c){
         c.classList.remove("is-selected");
@@ -247,13 +252,15 @@
     }
   }
   function back(){
-    if (current > 0) showScreen(current - 1);
+    if (current > 0 && current < totalQuestions) showScreen(current - 1);
   }
 
   quiz.querySelectorAll("[data-next]").forEach(function(b){
     b.addEventListener("click", function(e){ e.preventDefault(); next(); });
   });
-  if (backBtn) backBtn.addEventListener("click", function(e){ e.preventDefault(); back(); });
+  backButtons.forEach(function(b){
+    b.addEventListener("click", function(e){ e.preventDefault(); back(); });
+  });
 
   // Enter avança nos campos de texto
   quiz.querySelectorAll("input[type=text], input[type=tel]").forEach(function(inp){
