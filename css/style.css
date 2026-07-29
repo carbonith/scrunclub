@@ -150,6 +150,12 @@ p{ margin:0 0 1em; }
 .hero__sub{ font-size:1.15rem; color:var(--white); max-width:34ch; margin-bottom:32px; }
 .hero__actions{ display:flex; flex-wrap:wrap; gap:14px; }
 .hero__actions .btn{ flex:1 1 auto; }
+.hero__grid{ display:grid; grid-template-columns:1fr; gap:28px; align-items:center; }
+/* A foto é 9:16. O tamanho é limitado pela largura, e não pela altura,
+   para a proporção original nunca ser achatada. */
+.hero__media{ width:100%; max-width:min(380px, 30svh); margin:0 auto; }
+.hero__media img{ display:block; width:100%; height:auto;
+  border:1px solid var(--line); border-radius:16px; }
 
 /* --------- Sábado --------- */
 .grid-2{ display:grid; grid-template-columns:1fr; gap:16px; }
@@ -231,16 +237,84 @@ p{ margin:0 0 1em; }
 
 /* --------- Time --------- */
 .team{ display:grid; grid-template-columns:1fr; gap:18px; }
+.member{ display:flex; flex-direction:column; }
 .member__photo{ border-radius:16px 16px 0 0; overflow:hidden; border:1px solid var(--line);
   border-bottom:0; aspect-ratio:4/5; }
 .member__photo .media-fallback{ border-radius:0; border:0; min-height:100%; height:100%; }
 .member__photo .media-fallback img{ width:60%; max-width:180px; }
+.member__photo img{ width:100%; height:100%; object-fit:cover; object-position:center 25%; }
 .member__body{ border:1px solid var(--line); border-top:0; border-radius:0 0 16px 16px;
-  padding:20px; background:rgba(255,255,255,.02); }
+  padding:18px 20px; background:rgba(255,255,255,.02); flex:1; }
 .member__body h3{ font-family:"Archivo",sans-serif; text-transform:none; letter-spacing:0;
-  font-weight:700; font-size:1.15rem; margin-bottom:2px; }
-.member__role{ color:var(--gold-strong); font-weight:600; font-size:.9rem; margin-bottom:8px; }
+  font-weight:700; font-size:1.15rem; margin-bottom:4px; }
+.member__role{ color:var(--gold-strong); font-weight:600; font-size:.9rem;
+  line-height:1.45; margin-bottom:0; }
 .member__body p{ color:var(--muted); margin:0; font-size:.95rem; }
+
+/* --------- Galeria --------- */
+/* Grade em flex, e não em grid, para a última fileira ficar centralizada
+   quando o número de fotos não fecha a linha, sem buraco na ponta. */
+.gallery{
+  list-style:none; margin:26px 0 0; padding:0;
+  display:flex; flex-wrap:wrap; justify-content:center; gap:16px;
+}
+.gallery > li{ flex:0 0 calc((100% - 16px) / 2); }
+.gallery__item{
+  display:block; width:100%; padding:0; margin:0; cursor:pointer;
+  background:rgba(255,255,255,.02); border:1px solid var(--line);
+  border-radius:16px; overflow:hidden; aspect-ratio:3/4;
+  transition:border-color .18s var(--ease);
+}
+.gallery__item img{ width:100%; height:100%; object-fit:cover; }
+.gallery__item:hover{ border-color:var(--gold); }
+
+/* --------- Ampliação da galeria --------- */
+.lightbox{ position:fixed; inset:0; z-index:200; display:flex; align-items:center; justify-content:center; }
+.lightbox[hidden]{ display:none; }
+.lightbox__backdrop{ position:absolute; inset:0; background:rgba(10,10,10,.94); border:0; }
+.lightbox__panel{
+  position:relative; z-index:1; width:100%; height:100%;
+  display:flex; align-items:center; justify-content:center;
+  padding:64px 16px 104px;
+}
+.lightbox__figure{ margin:0; display:flex; flex-direction:column; align-items:center; gap:12px; max-height:100%; }
+.lightbox__img{
+  max-width:100%; max-height:calc(100svh - 260px); width:auto; height:auto;
+  border-radius:14px; border:1px solid var(--line);
+}
+.lightbox__caption{ color:var(--muted); font-size:.9rem; text-align:center; max-width:52ch; }
+.lightbox__btn{
+  position:absolute; display:inline-flex; align-items:center; justify-content:center;
+  width:48px; height:48px; min-height:48px; padding:0; cursor:pointer;
+  color:var(--white); background:rgba(10,10,10,.72);
+  border:1px solid var(--line); border-radius:999px;
+  transition:border-color .18s var(--ease), background .18s;
+}
+.lightbox__btn:hover{ border-color:var(--gold); background:rgba(201,162,76,.14); }
+.lightbox__btn svg{ width:22px; height:22px; }
+.lightbox__close{ top:12px; right:16px; }
+.lightbox__prev{ bottom:24px; left:calc(50% - 58px); }
+.lightbox__next{ bottom:24px; right:calc(50% - 58px); }
+body.lightbox-open{ overflow:hidden; }
+body.lightbox-open .wa-float{ display:none; }
+
+@media (min-width:768px){
+  .gallery{ gap:20px; }
+  .gallery > li{ flex:0 0 calc((100% - 40px) / 3); }
+  .lightbox__panel{ padding:72px 88px; }
+  .lightbox__img{ max-height:calc(100svh - 200px); }
+  .lightbox__close{ top:20px; right:24px; }
+  .lightbox__prev{ left:24px; right:auto; top:50%; bottom:auto; transform:translateY(-50%); }
+  .lightbox__next{ right:24px; left:auto; top:50%; bottom:auto; transform:translateY(-50%); }
+}
+@media (min-width:1024px){
+  .gallery > li{ flex:0 0 calc((100% - 60px) / 4); }
+  /* Enquanto forem cinco fotos, cinco por fileira fecham a linha sem sobra.
+     Ao chegarem as duas que faltam, a regra sai de cena e volta a grade de quatro. */
+  .gallery:has(> li:nth-child(5):last-child) > li{ flex:0 0 calc((100% - 80px) / 5); }
+  .hero__grid{ grid-template-columns:minmax(0,1fr) minmax(0,40%); gap:48px; }
+  .hero__media{ max-width:min(100%, 44svh); margin:0 auto; }
+}
 
 /* --------- FAQ --------- */
 .faq{ max-width:820px; margin:0 auto; border-top:1px solid var(--line); }
@@ -378,7 +452,7 @@ p{ margin:0 0 1em; }
   .cards-3{ grid-template-columns:repeat(3,1fr); }
   .steps{ grid-template-columns:repeat(3,1fr); }
   .about{ grid-template-columns:1.1fr .9fr; gap:44px; }
-  .team{ grid-template-columns:repeat(2,1fr); }
+  .team{ grid-template-columns:repeat(2,1fr); gap:20px; }
   .contact{ grid-template-columns:1fr 1fr; gap:48px; }
   .hero__actions .btn{ flex:0 0 auto; }
   .footer__grid{ flex-direction:row; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; }

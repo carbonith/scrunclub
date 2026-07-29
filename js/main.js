@@ -88,6 +88,103 @@
   });
 
   /* ===========================================================
+     GALERIA: ampliação das fotos
+     Sem biblioteca. Teclado, foco preso e retorno de foco.
+     =========================================================== */
+  (function(){
+    var lightbox = document.getElementById("lightbox");
+    var galleryList = document.getElementById("galeria-fotos");
+    if (!lightbox || !galleryList) return;
+
+    var triggers = Array.prototype.slice.call(galleryList.querySelectorAll(".gallery__item"));
+    if (!triggers.length) return;
+
+    var lbImg = document.getElementById("lightbox-img");
+    var lbCaption = document.getElementById("lightbox-caption");
+    var btnClose = lightbox.querySelector(".lightbox__close");
+    var btnPrev = lightbox.querySelector(".lightbox__prev");
+    var btnNext = lightbox.querySelector(".lightbox__next");
+    var index = 0;
+    var lastFocused = null;
+
+    // Com uma única foto não há para onde navegar.
+    if (triggers.length < 2){
+      btnPrev.hidden = true;
+      btnNext.hidden = true;
+    }
+
+    function render(i){
+      var img = triggers[i].querySelector("img");
+      index = i;
+      lbImg.src = img.getAttribute("src");
+      lbImg.alt = img.getAttribute("alt") || "";
+      lbCaption.textContent = img.getAttribute("alt") || "";
+    }
+
+    function focusables(){
+      return Array.prototype.slice.call(
+        lightbox.querySelectorAll(".lightbox__btn")
+      ).filter(function(el){ return !el.hidden; });
+    }
+
+    function open(i){
+      lastFocused = document.activeElement;
+      render(i);
+      lightbox.hidden = false;
+      document.body.classList.add("lightbox-open");
+      btnClose.focus();
+    }
+
+    function close(){
+      lightbox.hidden = true;
+      document.body.classList.remove("lightbox-open");
+      lbImg.removeAttribute("src");
+      lbImg.alt = "";
+      lbCaption.textContent = "";
+      if (lastFocused && typeof lastFocused.focus === "function"){
+        lastFocused.focus();
+      }
+      lastFocused = null;
+    }
+
+    function step(delta){
+      if (triggers.length < 2) return;
+      render((index + delta + triggers.length) % triggers.length);
+    }
+
+    triggers.forEach(function(btn, i){
+      btn.addEventListener("click", function(){ open(i); });
+    });
+
+    lightbox.querySelectorAll("[data-lightbox-close]").forEach(function(el){
+      el.addEventListener("click", close);
+    });
+    btnPrev.addEventListener("click", function(){ step(-1); });
+    btnNext.addEventListener("click", function(){ step(1); });
+
+    document.addEventListener("keydown", function(e){
+      if (lightbox.hidden) return;
+      if (e.key === "Escape"){ e.preventDefault(); close(); return; }
+      if (e.key === "ArrowLeft"){ e.preventDefault(); step(-1); return; }
+      if (e.key === "ArrowRight"){ e.preventDefault(); step(1); return; }
+      if (e.key === "Tab"){
+        var items = focusables();
+        if (!items.length) return;
+        var first = items[0];
+        var last = items[items.length - 1];
+        var active = document.activeElement;
+        if (items.indexOf(active) === -1){
+          e.preventDefault();
+          (e.shiftKey ? last : first).focus();
+          return;
+        }
+        if (e.shiftKey && active === first){ e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && active === last){ e.preventDefault(); first.focus(); }
+      }
+    });
+  })();
+
+  /* ===========================================================
      QUIZ
      =========================================================== */
   var quiz = document.getElementById("quiz");
