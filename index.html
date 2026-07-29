@@ -64,6 +64,7 @@
       </a>
       <nav class="nav" aria-label="Navegação principal">
         <a href="#sabado">Sábado</a>
+        <a href="#galera">Galera</a>
         <a href="#sobre">Sobre</a>
         <a href="#servicos">Serviços</a>
         <a href="#time">Time</a>
@@ -80,6 +81,7 @@
 
   <nav class="mobile-nav" id="mobile-nav" aria-label="Navegação mobile">
     <a href="#sabado">Sábado</a>
+    <a href="#galera">Galera</a>
     <a href="#sobre">Sobre</a>
     <a href="#servicos">Serviços</a>
     <a href="#time">Time</a>
@@ -94,12 +96,19 @@
   <section class="hero" aria-labelledby="hero-title">
     <div class="hero__bg" aria-hidden="true"></div>
     <div class="container">
-      <span class="badge">GRATUITO • TODO SÁBADO • 07H30</span>
-      <h1 id="hero-title">NINGUÉM CORRE SOZINHO.</h1>
-      <p class="hero__sub">O primeiro clube de corrida de Santo Amaro da Imperatriz. Todo sábado, às 07h30.</p>
-      <div class="hero__actions">
-        <a class="btn btn--gold" href="#quiz">Quero participar</a>
-        <a class="btn btn--outline" href="#sabado">Ver como funciona</a>
+      <div class="hero__grid">
+        <div class="hero__copy">
+          <span class="badge">GRATUITO • TODO SÁBADO • 07H30</span>
+          <h1 id="hero-title">NINGUÉM CORRE SOZINHO.</h1>
+          <p class="hero__sub">O primeiro clube de corrida de Santo Amaro da Imperatriz. Todo sábado, às 07h30.</p>
+          <div class="hero__actions">
+            <a class="btn btn--gold" href="#quiz">Quero participar</a>
+            <a class="btn btn--outline" href="#sabado">Ver como funciona</a>
+          </div>
+        </div>
+        <div class="hero__media">
+          <img src="images/destaque/regata.webp" alt="Uniforme do SC Run Club pendurado na tenda do clube" width="900" height="1600" loading="eager" fetchpriority="high" />
+        </div>
       </div>
     </div>
   </section>
@@ -143,6 +152,59 @@
       </div>
 
       <p class="closing reveal">Não tem taxa, não tem mensalidade, não tem nível mínimo. Só chegar.</p>
+    </div>
+  </section>
+
+  <!-- ============ GALERIA ============ -->
+  <section class="section section--alt2" id="galera" aria-labelledby="galera-title">
+    <div class="container">
+      <div class="reveal">
+        <p class="eyebrow">A galera</p>
+        <h2 id="galera-title">Nossa galera</h2>
+        <p class="lead">O sábado é isso aqui. Gente da cidade correndo junto, e a tenda cheia depois.</p>
+      </div>
+      <ul class="gallery reveal" id="galeria-fotos">
+        <li>
+          <button type="button" class="gallery__item" aria-label="Ampliar: corredores do SC Run Club reunidos em frente à tenda do clube">
+            <img src="images/galeria/grupo-01.webp" alt="Corredores do SC Run Club reunidos em frente à tenda do clube" loading="lazy" width="788" height="1400" />
+          </button>
+        </li>
+        <li>
+          <button type="button" class="gallery__item" aria-label="Ampliar: membro do clube com as crianças em frente à tenda do SC Run Club">
+            <img src="images/galeria/grupo-02.webp" alt="Membro do clube com as crianças em frente à tenda do SC Run Club" loading="lazy" width="787" height="1400" />
+          </button>
+        </li>
+        <!-- PENDENTE: grupo-06.webp e grupo-08.webp não foram enviados. Ao receber os arquivos, basta descomentar os itens correspondentes abaixo. -->
+        <li>
+          <button type="button" class="gallery__item" aria-label="Ampliar: grupo do SC Run Club reunido antes do treino de sábado">
+            <img src="images/galeria/grupo-03.webp" alt="Grupo do SC Run Club reunido antes do treino de sábado" loading="lazy" width="788" height="1401" />
+          </button>
+        </li>
+        <li>
+          <button type="button" class="gallery__item" aria-label="Ampliar: dois participantes do SC Run Club comemorando em frente à tenda">
+            <img src="images/galeria/grupo-04.webp" alt="Dois participantes do SC Run Club comemorando em frente à tenda" loading="lazy" width="788" height="1400" />
+          </button>
+        </li>
+        <!--
+        <li>
+          <button type="button" class="gallery__item" aria-label="Ampliar: integrantes do SC Run Club com medalhas após uma prova">
+            <img src="images/galeria/grupo-06.webp" alt="Integrantes do SC Run Club com medalhas após uma prova" loading="lazy" width="788" height="1400" />
+          </button>
+        </li>
+        -->
+        <li>
+          <button type="button" class="gallery__item" aria-label="Ampliar: estrutura da tenda do SC Run Club montada em dia de prova">
+            <img src="images/galeria/grupo-07.webp" alt="Estrutura da tenda do SC Run Club montada em dia de prova" loading="lazy" width="788" height="1400" />
+          </button>
+        </li>
+        <!--
+        <li>
+          <button type="button" class="gallery__item" aria-label="Ampliar: atleta do SC Run Club durante a transição de uma prova">
+            <img src="images/galeria/grupo-08.webp" alt="Atleta do SC Run Club durante a transição de uma prova" loading="lazy" width="788" height="1400" />
+          </button>
+        </li>
+        -->
+      </ul>
     </div>
   </section>
 
@@ -335,19 +397,19 @@
           <h3>Assessoria de corrida</h3>
           <span class="service__pro">com Reginaldo Abreu</span>
           <p>Planilha individual, controle de ritmo e periodização, para você evoluir sem se quebrar no caminho.</p>
-          <a class="btn btn--ghost" href="#contato" data-servico="Assessoria de corrida">Tenho interesse</a>
+          <a class="btn btn--ghost" href="https://wa.me/5548988040134?text=Oi%20Reginaldo%2C%20vim%20pelo%20SC%20Run%20Club%20e%20quero%20saber%20mais%20sobre%20a%20assessoria%20de%20corrida." target="_blank" rel="noopener noreferrer" data-servico="Assessoria de corrida">Tenho interesse</a>
         </div>
         <div class="service">
           <h3>Fisioterapia esportiva</h3>
           <span class="service__pro">com Mateus Pinheiro</span>
           <p>Avaliação, prevenção e retorno seguro depois da lesão, para você não precisar parar de correr.</p>
-          <a class="btn btn--ghost" href="#contato" data-servico="Fisioterapia esportiva">Tenho interesse</a>
+          <a class="btn btn--ghost" href="https://wa.me/5548999700089?text=Oi%20Mateus%2C%20vim%20pelo%20SC%20Run%20Club%20e%20quero%20saber%20mais%20sobre%20a%20fisioterapia%20esportiva." target="_blank" rel="noopener noreferrer" data-servico="Fisioterapia esportiva">Tenho interesse</a>
         </div>
         <div class="service">
           <h3>Nutrição esportiva</h3>
           <span class="service__pro">com Thiago Carboni</span>
           <p>Estratégia alimentar para treino, prova e recuperação, montada em cima do seu volume real de corrida.</p>
-          <a class="btn btn--ghost" href="#contato" data-servico="Nutrição esportiva">Tenho interesse</a>
+          <a class="btn btn--ghost" href="https://wa.me/5548999052280?text=Oi%20Thiago%2C%20vim%20pelo%20SC%20Run%20Club%20e%20quero%20saber%20mais%20sobre%20a%20nutri%C3%A7%C3%A3o%20esportiva." target="_blank" rel="noopener noreferrer" data-servico="Nutrição esportiva">Tenho interesse</a>
         </div>
       </div>
       <p class="disclaimer reveal">Os serviços são opcionais e contratados diretamente com cada profissional. A participação no treino de sábado não depende deles.</p>
@@ -361,36 +423,31 @@
       <h2 id="time-title" class="reveal">Quem está por trás</h2>
       <div class="team reveal" style="margin-top:26px;">
         <article class="member">
-          <!-- SUBSTITUIR: foto de Reginaldo Abreu (mesmo enquadramento dos demais) -->
-          <div class="member__photo"><div class="media-fallback" role="img" aria-label="Reginaldo Abreu"><img src="images/logo.webp" alt="SC Run Club" loading="lazy" width="180" height="47" /></div></div>
+          <div class="member__photo"><img src="images/equipe/reginaldo.webp" alt="Reginaldo Abreu, treinador de corrida do SC Run Club, durante uma prova" loading="lazy" width="736" height="1000" /></div>
           <div class="member__body">
             <h3>Reginaldo Abreu</h3>
-            <p class="member__role">Treinador de corrida</p>
+            <p class="member__role">Treinador de corrida, CREF&nbsp;18590-G/SC</p>
           </div>
         </article>
         <article class="member">
-          <!-- SUBSTITUIR: foto de Mateus Pinheiro -->
-          <div class="member__photo"><div class="media-fallback" role="img" aria-label="Mateus Pinheiro"><img src="images/logo.webp" alt="SC Run Club" loading="lazy" width="180" height="47" /></div></div>
+          <div class="member__photo"><img src="images/equipe/mateus.webp" alt="Mateus Pinheiro, fisioterapeuta esportivo do SC Run Club, durante uma prova" loading="lazy" width="868" height="1000" /></div>
           <div class="member__body">
             <h3>Mateus Pinheiro</h3>
-            <p class="member__role">Fisioterapeuta esportivo</p>
+            <p class="member__role">Fisioterapeuta esportivo, CREFITO&nbsp;236466-F</p>
           </div>
         </article>
         <article class="member">
-          <!-- SUBSTITUIR: foto de Thiago Carboni -->
-          <div class="member__photo"><div class="media-fallback" role="img" aria-label="Thiago Carboni"><img src="images/logo.webp" alt="SC Run Club" loading="lazy" width="180" height="47" /></div></div>
+          <div class="member__photo"><img src="images/equipe/thiago.webp" alt="Thiago Carboni, nutricionista esportivo do SC Run Club, durante uma prova" loading="lazy" width="666" height="1000" /></div>
           <div class="member__body">
             <h3>Thiago Carboni</h3>
-            <p class="member__role">Nutricionista esportivo, CRN10 14648</p>
+            <p class="member__role">Nutricionista esportivo, CRN10&nbsp;14648</p>
           </div>
         </article>
         <article class="member">
-          <!-- SUBSTITUIR: foto de André. PENDENTE: sobrenome e descrição de André (diretoria do clube). -->
-          <div class="member__photo"><div class="media-fallback" role="img" aria-label="André"><img src="images/logo.webp" alt="SC Run Club" loading="lazy" width="180" height="47" /></div></div>
+          <div class="member__photo"><img src="images/equipe/andre.webp" alt="André Silveira, responsável técnico do SC Run Club, durante uma prova" loading="lazy" width="667" height="1000" /></div>
           <div class="member__body">
-            <h3>André</h3>
-            <p class="member__role">Diretoria do clube</p>
-            <!-- PENDENTE: sobrenome e linha de descrição de André -->
+            <h3>André Silveira</h3>
+            <p class="member__role">Responsável técnico do clube</p>
           </div>
         </article>
       </div>
@@ -515,6 +572,7 @@
       </div>
       <nav aria-label="Navegação do rodapé">
         <a href="#sabado">Sábado</a>
+        <a href="#galera">Galera</a>
         <a href="#sobre">Sobre</a>
         <a href="#servicos">Serviços</a>
         <a href="#faq">FAQ</a>
@@ -533,6 +591,26 @@
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.6.1a6.6 6.6 0 0 1-3.2-2.8c-.2-.4.2-.4.6-1.2.1-.2 0-.4 0-.5s-.6-1.4-.8-1.9-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3A2.9 2.9 0 0 0 5.9 9c0 1.7 1.2 3.4 1.4 3.6s2.4 3.7 5.9 5c2.3.8 2.3.5 2.7.5s1.4-.6 1.6-1.1.2-1 .1-1.1-.3-.2-.6-.3z"/></svg>
     <span>Entrar no grupo</span>
   </a>
+  <!-- ============ AMPLIAÇÃO DA GALERIA ============ -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Foto ampliada" hidden>
+    <div class="lightbox__backdrop" data-lightbox-close></div>
+    <div class="lightbox__panel">
+      <figure class="lightbox__figure">
+        <img class="lightbox__img" id="lightbox-img" alt="" />
+        <figcaption class="lightbox__caption" id="lightbox-caption"></figcaption>
+      </figure>
+      <button type="button" class="lightbox__btn lightbox__close" data-lightbox-close aria-label="Fechar ampliação">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <button type="button" class="lightbox__btn lightbox__prev" aria-label="Foto anterior">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+      </button>
+      <button type="button" class="lightbox__btn lightbox__next" aria-label="Próxima foto">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </div>
+
   <script src="js/main.js" defer></script>
 </body>
 </html>
