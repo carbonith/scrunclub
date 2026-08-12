@@ -26,7 +26,7 @@
   "sociais": [
     { "id": "instagram", "label": "Instagram", "href": "https://www.instagram.com/sc.runclub/", "icone": "instagram" },
     { "id": "strava", "label": "Strava", "href": "https://www.strava.com/clubs/2201431", "icone": "strava" },
-    { "id": "email", "label": "E-mail", "href": "mailto:TROCAR_EMAIL", "icone": "mail" }
+    { "id": "whatsapp", "label": "WhatsApp oficial do clube", "href": "https://wa.me/5548992033419?text=Ol%C3%A1%2C%20vim%20pelo%20site%20do%20SC%20Run%20Club.", "icone": "whatsapp" }
   ],
 
   "atalhos": [
@@ -100,7 +100,7 @@
   ],
 
   "comunidade": {
-    "whatsapp": "https://chat.whatsapp.com/HPYxeoswQMVCVlk2EjRVwb?s=sh&p=i&ilr=2&amv=2",
+    "whatsapp": "https://wa.me/5548992033419?text=Ol%C3%A1%2C%20quero%20entrar%20no%20grupo%20do%20SC%20Run%20Club.",
     "strava": "https://www.strava.com/clubs/2201431"
   },
 
@@ -135,7 +135,7 @@
   "footer": {
     "copyright": "© 2026 SC Run Club · Santo Amaro da Imperatriz",
     "privacidade": "/privacidade.html",
-    "contato": "mailto:TROCAR_EMAIL"
+    "contato": "https://wa.me/5548992033419?text=Ol%C3%A1%2C%20vim%20pelo%20site%20do%20SC%20Run%20Club."
   },
 
   "analytics": { "ga4": "G-TROCAR" }
