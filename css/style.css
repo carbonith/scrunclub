@@ -55,6 +55,10 @@ p{ margin:0 0 1em; }
 }
 .section h2{ font-size: clamp(1.9rem, 7vw, 3.1rem); margin-bottom:10px; }
 .lead{ color: var(--muted); font-size:1.05rem; max-width:56ch; margin-bottom:34px; }
+.flow-note{
+  color: var(--white); font-size:.95rem; max-width:60ch; margin:0 0 30px;
+  border-left:3px solid var(--gold); padding:2px 0 2px 14px;
+}
 
 /* --------- Botões --------- */
 .btn{

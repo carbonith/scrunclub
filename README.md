@@ -54,9 +54,11 @@ Não é necessário mexer em HTML, CSS ou JS para o dia a dia.
 - **Imagens dos cards:** exporte em .webp, 112x112 px, e aponte no campo *icone*.
 - **Hero:** preencha *perfil.hero* com o caminho da imagem. Deixe vazio para esconder.
 
-Links já configurados: Instagram @sc.runclub, clube 2201431 no Strava e o grupo do WhatsApp.
+Links já configurados: Instagram @sc.runclub, clube 2201431 no Strava e o canal oficial do clube no WhatsApp, +55 (48) 99203-3419.
 
-**Ainda pendente:** trocar TROCAR_EMAIL (e-mail de contato, aparece no footer e na política de privacidade) e G-TROCAR (ID do Google Analytics 4).
+Todo contato do site passa pelo canal oficial (https://wa.me/5548992033419), com mensagem pré-preenchida diferente por origem do clique. Não há contato individual dos profissionais no site.
+
+**Ainda pendente:** trocar G-TROCAR (ID do Google Analytics 4).
 
 ### Opção de CMS
 
@@ -132,6 +134,5 @@ Vale montar um onboarding de três mensagens após a inscrição: boas-vindas co
 
 - Logo final em SVG e PNG 512x512 (hoje há um logo provisório em assets/logo.svg).
 - Fotos do grupo para hero, cards e imagem de compartilhamento (assets/og.webp, 1200x630).
-- E-mail oficial de contato.
 - ID da propriedade GA4.
 - Definição sobre usar ou não pixel da Meta.
