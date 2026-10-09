@@ -193,7 +193,7 @@
         D.encontro.diaSemana + ', ' + D.encontro.horario + ' — ' + D.encontro.endereco + '. ' + D.encontro.observacao));
       if (ok(D.comunidade.whatsapp)) sheetBody.appendChild(botaoPill('Entrar no grupo do WhatsApp 💬', D.comunidade.whatsapp, 'click_whatsapp'));
       if (ok(D.comunidade.strava))   sheetBody.appendChild(botaoPill('Seguir o clube no Strava 🏃', D.comunidade.strava, 'click_strava'));
-      sheetBody.appendChild(botaoPill('Inscrever no próximo encontro', null, null, () => openForm('reserva', 'Próximo encontro')));
+      sheetBody.appendChild(botaoPill('Inscrever-me no próximo encontro', null, null, () => openForm('reserva', 'Próximo encontro')));
     }
   }
 

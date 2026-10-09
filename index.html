@@ -79,7 +79,7 @@
     </div>
   </header>
 
-  <nav class="mobile-nav" id="mobile-nav" aria-label="Navegação mobile">
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Navegação em dispositivos móveis">
     <a href="#sabado">Sábado</a>
     <a href="#galera">Galera</a>
     <a href="#sobre">Sobre</a>
@@ -96,18 +96,13 @@
   <section class="hero" aria-labelledby="hero-title">
     <div class="hero__bg" aria-hidden="true"></div>
     <div class="container">
-      <div class="hero__grid">
-        <div class="hero__copy">
-          <span class="badge">GRATUITO • TODO SÁBADO • 07H30</span>
-          <h1 id="hero-title">NINGUÉM CORRE SOZINHO.</h1>
-          <p class="hero__sub">O primeiro clube de corrida de Santo Amaro da Imperatriz. Todo sábado, às 07h30.</p>
-          <div class="hero__actions">
-            <a class="btn btn--gold" href="#quiz">Quero participar</a>
-            <a class="btn btn--outline" href="#sabado">Ver como funciona</a>
-          </div>
-        </div>
-        <div class="hero__media">
-          <img src="images/destaque/regata.webp" alt="Uniforme do SC Run Club pendurado na tenda do clube" width="900" height="1600" loading="eager" fetchpriority="high" />
+      <div class="hero__copy">
+        <span class="badge">GRATUITO • TODO SÁBADO • 07h30</span>
+        <h1 id="hero-title">NINGUÉM CORRE SOZINHO.</h1>
+        <p class="hero__sub">O primeiro clube de corrida de Santo Amaro da Imperatriz. Todo sábado, às 07h30.</p>
+        <div class="hero__actions">
+          <a class="btn btn--gold" href="#quiz">Quero participar</a>
+          <a class="btn btn--outline" href="#sabado">Ver como funciona</a>
         </div>
       </div>
     </div>
@@ -119,7 +114,7 @@
       <div class="reveal">
         <p class="eyebrow">O sábado</p>
         <h2 id="sabado-title">Como é o nosso sábado</h2>
-        <p class="lead">Todo sábado às 07h30 a gente se encontra no mesmo lugar. Aquece junto, corre no seu ritmo e fica para o café.</p>
+        <p class="lead">Todo sábado, às 07h30, a gente se encontra no mesmo lugar. Aquece junto, corre no seu ritmo e fica para o café.</p>
       </div>
       <div class="grid-2 reveal">
         <div class="feature">
@@ -161,7 +156,7 @@
       <div class="reveal">
         <p class="eyebrow">A galera</p>
         <h2 id="galera-title">Nossa galera</h2>
-        <p class="lead">O sábado é isso aqui. Gente da cidade correndo junto, e a tenda cheia depois.</p>
+        <p class="lead">O sábado é isso aqui. Gente da cidade correndo junto e a tenda cheia depois.</p>
       </div>
       <ul class="gallery reveal" id="galeria-fotos">
         <li>
@@ -215,8 +210,8 @@
         <p class="eyebrow">Sobre</p>
         <h2 id="sobre-title">O clube</h2>
         <p>O SC Run Club nasceu porque Santo Amaro da Imperatriz tem corredor, mas não tinha clube. Muita gente correndo sozinha, na mesma rua, no mesmo horário, sem se conhecer.</p>
-        <p>A ideia é simples: juntar essas pessoas. O sábado é gratuito e aberto, do corredor de primeira vez a quem treina para maratona. A regra é uma só, ninguém fica para trás.</p>
-        <p>Por trás do clube tem um time de treinador, fisioterapeuta e nutricionista. Não para vender nada no sábado, mas para que quem quiser ir além tenha para onde ir.</p>
+        <p>A ideia é simples: juntar essas pessoas. O sábado é gratuito e aberto, do corredor de primeira vez a quem treina para maratona. A regra é uma só: ninguém fica para trás.</p>
+        <p>Por trás do clube tem um time de treinadores, fisioterapeuta e nutricionista. Não para vender nada no sábado, mas para que quem quiser ir além tenha para onde ir.</p>
       </div>
       <!-- SUBSTITUIR: foto do grupo correndo. Enquanto não houver, logo sobre fundo texturizado. -->
       <div class="media-fallback reveal" role="img" aria-label="SC Run Club">
@@ -258,7 +253,7 @@
         </div>
         <div class="step">
           <span class="step__num">02</span>
-          <div><h3>Chegue no sábado, 07h30</h3><p>Rua Salete Becker. Vem de tênis, garrafa de água e disposição.</p></div>
+          <div><h3>Chegue no sábado, às 07h30</h3><p>Rua Salete Becker. Vem de tênis, garrafa de água e disposição.</p></div>
         </div>
         <div class="step">
           <span class="step__num">03</span>
@@ -300,12 +295,12 @@
 
           <!-- Tela 2: nascimento -->
           <div class="quiz__screen">
-            <h2 class="quiz__q">Qual a sua data de nascimento?</h2>
+            <h2 class="quiz__q">Qual é a sua data de nascimento?</h2>
             <div class="field">
               <label for="q-nascimento">Data de nascimento (dia/mês/ano)</label>
               <input type="text" id="q-nascimento" name="nascimento" inputmode="numeric" placeholder="00/00/0000" autocomplete="bday" required />
             </div>
-            <p class="quiz__warn" id="q-menor-warn">Menores de 18 anos precisam estar acompanhados de responsável no treino.</p>
+            <p class="quiz__warn" id="q-menor-warn">Menores de 18 anos precisam estar acompanhados de um responsável no treino.</p>
             <p class="quiz__error" role="alert"></p>
             <div class="quiz__nav">
               <button type="button" class="btn btn--ghost quiz__back">Voltar</button>
@@ -315,7 +310,7 @@
 
           <!-- Tela 3: whatsapp -->
           <div class="quiz__screen">
-            <h2 class="quiz__q">Qual o seu WhatsApp?</h2>
+            <h2 class="quiz__q">Qual é o seu WhatsApp?</h2>
             <div class="field">
               <label for="q-telefone">WhatsApp</label>
               <input type="tel" id="q-telefone" name="telefone" inputmode="numeric" placeholder="(00) 00000-0000" autocomplete="tel" required />
@@ -329,7 +324,7 @@
 
           <!-- Tela 4: nível -->
           <div class="quiz__screen">
-            <h2 class="quiz__q">Qual o seu nível na corrida?</h2>
+            <h2 class="quiz__q">Qual é o seu nível na corrida?</h2>
             <div class="level-cards" role="radiogroup" aria-label="Seu nível na corrida">
               <label class="level-card">
                 <input type="radio" name="nivel" value="Iniciante, 3K" />
@@ -375,7 +370,7 @@
           <div class="quiz__screen quiz__done">
             <span class="check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>
             <h2>Inscrição feita.</h2>
-            <p>Te esperamos no sábado, 07h30, na Rua Salete Becker.</p>
+            <p>Te esperamos no sábado, às 07h30, na Rua Salete Becker.</p>
             <div class="actions">
               <a class="btn btn--gold" href="https://chat.whatsapp.com/HPYxeoswQMVCVlk2EjRVwb?s=sh&p=i&ilr=2&amv=2" target="_blank" rel="noopener">Entrar no grupo do WhatsApp</a>
               <a class="btn btn--outline" href="https://www.google.com/maps/search/?api=1&query=Rua+Salete+Becker,+Santo+Amaro+da+Imperatriz,+SC" target="_blank" rel="noopener">Abrir no Google Maps</a>
@@ -390,13 +385,13 @@
   <section class="section section--alt" id="servicos" aria-labelledby="servicos-title">
     <div class="container">
       <p class="eyebrow reveal">Serviços</p>
-      <h2 id="servicos-title" class="reveal">Quer ir além do sábado</h2>
+      <h2 id="servicos-title" class="reveal">Quer ir além do sábado?</h2>
       <p class="lead reveal">O treino coletivo é e sempre vai ser gratuito. Para quem quer acompanhamento individual, o time do clube atende de forma independente.</p>
       <div class="services-grid reveal">
         <div class="service">
           <h3>Assessoria de corrida</h3>
           <span class="service__pro">com Reginaldo Abreu</span>
-          <p>Planilha individual, controle de ritmo e periodização, para você evoluir sem se quebrar no caminho.</p>
+          <p>Planilha individual, controle de ritmo e periodização para você evoluir sem se quebrar no caminho.</p>
           <a class="btn btn--ghost" href="https://wa.me/5548988040134?text=Oi%20Reginaldo%2C%20vim%20pelo%20SC%20Run%20Club%20e%20quero%20saber%20mais%20sobre%20a%20assessoria%20de%20corrida." target="_blank" rel="noopener noreferrer" data-servico="Assessoria de corrida">Tenho interesse</a>
         </div>
         <div class="service">
@@ -450,6 +445,13 @@
             <p class="member__role">Responsável técnico do clube</p>
           </div>
         </article>
+        <article class="member">
+          <div class="member__photo member__photo--full"><img src="images/equipe/matheus-ohl.webp" alt="Matheus Ohl, treinador de corrida do SC Run Club, correndo à beira-mar" loading="lazy" width="1000" height="1500" /></div>
+          <div class="member__body">
+            <h3>Matheus Ohl</h3>
+            <p class="member__role">Treinador de corrida, CREF&nbsp;043539 G/SC</p>
+          </div>
+        </article>
       </div>
     </div>
   </section>
@@ -486,7 +488,7 @@
           <div class="faq__a" id="faq-1" role="region" aria-labelledby="faqb-1"><div>Não. O treino de sábado é gratuito, incluindo o café e as frutas depois. Não existe mensalidade nem taxa de inscrição.</div></div>
         </div>
         <div class="faq__item">
-          <button class="faq__q" aria-expanded="false" aria-controls="faq-2" id="faqb-2">Nunca corri na vida, posso ir?</button>
+          <button class="faq__q" aria-expanded="false" aria-controls="faq-2" id="faqb-2">Nunca corri na vida. Posso ir?</button>
           <div class="faq__a" id="faq-2" role="region" aria-labelledby="faqb-2"><div>Pode e deve. Existe um grupo de iniciantes justamente para isso, com distância curta e ritmo de conversa.</div></div>
         </div>
         <div class="faq__item">
