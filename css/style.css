@@ -150,12 +150,7 @@ p{ margin:0 0 1em; }
 .hero__sub{ font-size:1.15rem; color:var(--white); max-width:34ch; margin-bottom:32px; }
 .hero__actions{ display:flex; flex-wrap:wrap; gap:14px; }
 .hero__actions .btn{ flex:1 1 auto; }
-.hero__grid{ display:grid; grid-template-columns:1fr; gap:28px; align-items:center; }
-/* A foto é 9:16. O tamanho é limitado pela largura, e não pela altura,
-   para a proporção original nunca ser achatada. */
-.hero__media{ width:100%; max-width:min(380px, 30svh); margin:0 auto; }
-.hero__media img{ display:block; width:100%; height:auto;
-  border:1px solid var(--line); border-radius:16px; }
+.hero__copy{ max-width:900px; }
 
 /* --------- Sábado --------- */
 .grid-2{ display:grid; grid-template-columns:1fr; gap:16px; }
@@ -243,6 +238,7 @@ p{ margin:0 0 1em; }
 .member__photo .media-fallback{ border-radius:0; border:0; min-height:100%; height:100%; }
 .member__photo .media-fallback img{ width:60%; max-width:180px; }
 .member__photo img{ width:100%; height:100%; object-fit:cover; object-position:center 25%; }
+.member__photo--full img{ object-fit:contain; object-position:center; }
 .member__body{ border:1px solid var(--line); border-top:0; border-radius:0 0 16px 16px;
   padding:18px 20px; background:rgba(255,255,255,.02); flex:1; }
 .member__body h3{ font-family:"Archivo",sans-serif; text-transform:none; letter-spacing:0;
@@ -312,8 +308,6 @@ body.lightbox-open .wa-float{ display:none; }
   /* Enquanto forem cinco fotos, cinco por fileira fecham a linha sem sobra.
      Ao chegarem as duas que faltam, a regra sai de cena e volta a grade de quatro. */
   .gallery:has(> li:nth-child(5):last-child) > li{ flex:0 0 calc((100% - 80px) / 5); }
-  .hero__grid{ grid-template-columns:minmax(0,1fr) minmax(0,40%); gap:48px; }
-  .hero__media{ max-width:min(100%, 44svh); margin:0 auto; }
 }
 
 /* --------- FAQ --------- */
@@ -460,7 +454,10 @@ body.lightbox-open .wa-float{ display:none; }
 }
 @media (min-width:1024px){
   .services-grid{ grid-template-columns:repeat(3,1fr); }
-  .team{ grid-template-columns:repeat(4,1fr); }
+  .team{ grid-template-columns:repeat(5,minmax(0,1fr)); }
+}
+@media (max-width:767px){
+  .member__photo img{ object-fit:contain; object-position:center; }
 }
 .services-grid{ display:grid; grid-template-columns:1fr; gap:18px; }
 @media (min-width:768px){ .services-grid{ grid-template-columns:repeat(3,1fr); } }

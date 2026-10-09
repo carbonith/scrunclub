@@ -38,6 +38,6 @@
 
 [[redirects]]
   from = "/instagram"
-  to = "https://www.instagram.com/sc.runclub/"
+  to = "https://www.instagram.com/sc.clubrun/"
   status = 302
   force = true
