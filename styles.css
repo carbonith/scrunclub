@@ -2,8 +2,8 @@
   --core-black:#0B0A07;
   --surface:#141210;
   --surface-2:#1C1916;
-  --matte-gold:#C9A227;
-  --gold-soft:#E3C463;
+  --matte-gold:#D4AF37;
+  --gold-soft:#DDB953;
   --cloud-white:#FEFEFE;
   --muted:#A39C90;
   --line:rgba(254,254,254,.08);
@@ -17,10 +17,10 @@
 html{scroll-behavior:smooth}
 body{
   margin:0;background:var(--core-black);color:var(--cloud-white);
-  font-family:Inter,Outfit,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  font-family:"Manrope",system-ui,sans-serif;
   line-height:1.55;-webkit-font-smoothing:antialiased;
 }
-h1,h2,h3,.btn,.cta{font-family:"Space Grotesk",Inter,system-ui,sans-serif;letter-spacing:-.01em}
+h1,h2,h3,.btn,.cta{font-family:"Barlow Condensed",Impact,sans-serif;letter-spacing:.015em}
 img{max-width:100%;display:block}
 a{color:var(--gold-soft);text-decoration:none}
 a:hover{text-decoration:underline}

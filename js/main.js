@@ -5,7 +5,7 @@
    =========================================================== */
 (function(){
   "use strict";
-  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   /* ---------- Header sólido ao rolar ---------- */
   var header = document.querySelector(".header");
@@ -22,6 +22,7 @@
   function closeMenu(){
     if (!burger) return;
     burger.setAttribute("aria-expanded","false");
+    burger.setAttribute("aria-label","Abrir menu");
     mobileNav.classList.remove("is-open");
     document.body.style.overflow = "";
   }
@@ -30,17 +31,25 @@
     if (open) { closeMenu(); }
     else {
       burger.setAttribute("aria-expanded","true");
+      burger.setAttribute("aria-label","Fechar menu");
       mobileNav.classList.add("is-open");
       document.body.style.overflow = "hidden";
     }
   }
   if (burger && mobileNav){
+    var desktopNav = window.matchMedia("(min-width: 1024px)");
+    desktopNav.addEventListener("change", function(event){
+      if (event.matches && burger.getAttribute("aria-expanded") === "true") closeMenu();
+    });
     burger.addEventListener("click", toggleMenu);
     mobileNav.querySelectorAll("a").forEach(function(a){
       a.addEventListener("click", closeMenu);
     });
-    document.addEventListener("keydown", function(e){
-      if (e.key === "Escape") closeMenu();
+    document.addEventListener("keydown", function(event){
+      if (event.key === "Escape" && burger.getAttribute("aria-expanded") === "true"){
+        closeMenu();
+        burger.focus();
+      }
     });
   }
 
@@ -63,19 +72,36 @@
   });
 
   /* ---------- IntersectionObserver ---------- */
-  var reveals = document.querySelectorAll(".reveal");
-  if (reduceMotion || !("IntersectionObserver" in window)){
-    reveals.forEach(function(el){ el.classList.add("is-visible"); });
-  } else {
-    var io = new IntersectionObserver(function(entries){
+  if (!motionPreference.matches && "IntersectionObserver" in window){
+    var revealObserver = new IntersectionObserver(function(entries){
       entries.forEach(function(entry){
         if (entry.isIntersecting){
-          entry.target.classList.add("is-visible");
-          io.unobserve(entry.target);
+          var section = entry.target;
+          section.classList.remove("is-pending");
+          section.classList.add("is-visible");
+          revealObserver.unobserve(section);
+          section.querySelectorAll("[data-count]").forEach(function(counter){
+            var total = Number(counter.textContent);
+            var start = performance.now();
+            function tick(now){
+              if (motionPreference.matches){
+                counter.textContent = total;
+                return;
+              }
+              var progress = Math.min((now - start) / 550, 1);
+              counter.textContent = Math.round(total * progress);
+              if (progress < 1) requestAnimationFrame(tick);
+            }
+            counter.textContent = "0";
+            requestAnimationFrame(tick);
+          });
         }
       });
-    }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
-    reveals.forEach(function(el){ io.observe(el); });
+    }, { rootMargin: "0px 0px -8% 0px" });
+    document.querySelectorAll(".reveal").forEach(function(el){
+      if (el.getBoundingClientRect().top >= window.innerHeight) el.classList.add("is-pending");
+      revealObserver.observe(el);
+    });
   }
 
   /* ---------- Pré-selecionar serviço no formulário de contato ---------- */
@@ -101,11 +127,15 @@
 
     var lbImg = document.getElementById("lightbox-img");
     var lbCaption = document.getElementById("lightbox-caption");
+    var position = document.getElementById("lightbox-position");
+    var panel = lightbox.querySelector(".lightbox__panel");
+    var figure = lightbox.querySelector(".lightbox__figure");
     var btnClose = lightbox.querySelector(".lightbox__close");
     var btnPrev = lightbox.querySelector(".lightbox__prev");
     var btnNext = lightbox.querySelector(".lightbox__next");
     var index = 0;
     var lastFocused = null;
+    var gestureStart = null;
 
     // Com uma única foto não há para onde navegar.
     if (triggers.length < 2){
@@ -119,6 +149,7 @@
       lbImg.src = img.getAttribute("src");
       lbImg.alt = img.getAttribute("alt") || "";
       lbCaption.textContent = img.getAttribute("alt") || "";
+      position.textContent = (index + 1) + " / " + triggers.length;
     }
 
     function focusables(){
@@ -141,6 +172,8 @@
       lbImg.removeAttribute("src");
       lbImg.alt = "";
       lbCaption.textContent = "";
+      position.textContent = "";
+      gestureStart = null;
       if (lastFocused && typeof lastFocused.focus === "function"){
         lastFocused.focus();
       }
@@ -161,6 +194,26 @@
     });
     btnPrev.addEventListener("click", function(){ step(-1); });
     btnNext.addEventListener("click", function(){ step(1); });
+    panel.addEventListener("click", function(event){
+      if (event.target === panel) close();
+    });
+    lbImg.addEventListener("load", function(){
+      if (!lightbox.hidden && !motionPreference.matches && lbImg.animate){
+        lbImg.animate([{ opacity:.55 }, { opacity:1 }], { duration:240, easing:"ease-out" });
+      }
+    });
+    figure.addEventListener("touchstart", function(event){
+      gestureStart = event.touches.length === 1 ? event.touches[0] : null;
+    }, { passive:true });
+    figure.addEventListener("touchcancel", function(){ gestureStart = null; }, { passive:true });
+    figure.addEventListener("touchend", function(event){
+      if (!gestureStart) return;
+      var end = event.changedTouches[0];
+      var deltaX = end.clientX - gestureStart.clientX;
+      var deltaY = end.clientY - gestureStart.clientY;
+      gestureStart = null;
+      if (Math.abs(deltaX) >= 50 && Math.abs(deltaX) > Math.abs(deltaY) * 1.5) step(deltaX < 0 ? 1 : -1);
+    }, { passive:true });
 
     document.addEventListener("keydown", function(e){
       if (lightbox.hidden) return;
