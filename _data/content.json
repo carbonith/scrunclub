@@ -11,14 +11,14 @@
 
   "destaque": {
     "ativo": true,
-    "texto": "Próximo encontro: sábado, 07:30 — Rua Salete Broering Becker",
+    "texto": "Próximo encontro: sábado, {horario} — Rua Salete Broering Becker",
     "href": "#cards"
   },
 
   "encontro": {
     "diaSemana": "Todos os sábados",
-    "horario": "07:30",
-    "endereco": "Rua Salete Broering Becker, Santo Amaro da Imperatriz",
+    "horario": "06h30",
+    "endereco": "Rua Salete Broering Becker, cerca de 200 metros à frente da Prefeitura Nova, Santo Amaro da Imperatriz – SC",
     "mapsUrl": "https://maps.google.com/?q=Rua+Salete+Broering+Becker,+Santo+Amaro+da+Imperatriz",
     "observacao": "Inscreva-se para o próximo encontro; a data é divulgada no grupo do WhatsApp."
   },
@@ -32,7 +32,7 @@
   "atalhos": [
     { "label": "Instagram", "href": "https://www.instagram.com/sc.runclub/", "evento": "click_instagram" },
     { "label": "Ponto de encontro", "href": "https://maps.google.com/?q=Rua+Salete+Broering+Becker,+Santo+Amaro+da+Imperatriz", "evento": "click_maps" },
-    { "label": "Sábados 07:30", "href": "#cards", "evento": "click_horario" }
+    { "label": "Sábados {horario}", "href": "#cards", "evento": "click_horario" }
   ],
 
   "cards": [
@@ -94,7 +94,7 @@
   "unidades": [
     {
       "nome": "Ponto de encontro — Rua Salete Broering Becker",
-      "detalhe": "Sábados, 07:30 · Santo Amaro da Imperatriz",
+      "detalhe": "Sábados, {horario} · Santo Amaro da Imperatriz",
       "mapsUrl": "https://maps.google.com/?q=Rua+Salete+Broering+Becker,+Santo+Amaro+da+Imperatriz"
     }
   ],
@@ -115,7 +115,7 @@
   "guia": {
     "titulo": "Primeira vez? É tranquilo.",
     "itens": [
-      "Chega 10 minutos antes das 07:30 pra gente largar junto.",
+      "Chega 10 minutos antes das {horario} pra gente largar junto.",
       "Tênis de corrida e roupa leve. Boné e protetor solar ajudam.",
       "Não precisa levar nada: tem fruta, água e café por nossa conta.",
       "Cada um no seu ritmo — do caminhar ao voar. Ninguém fica pra trás."
@@ -125,7 +125,7 @@
   "programas": {
     "titulo": "Programas",
     "itens": [
-      { "nome": "Encontro semanal", "detalhe": "Gratuito, todos os sábados às 07:30. Grupos por ritmo." },
+      { "nome": "Encontro semanal", "detalhe": "Gratuito, todos os sábados às {horario}. Grupos por ritmo." },
       { "nome": "Treino guiado", "detalhe": "Planilha e acompanhamento pra quem quer evoluir com constância." },
       { "nome": "Reabilitação e prevenção", "detalhe": "Avaliação e retorno seguro pra quem está lesionado." },
       { "nome": "Nutrição esportiva", "detalhe": "Orientação alimentar aplicada à corrida." }
