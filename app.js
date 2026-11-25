@@ -16,6 +16,7 @@
   };
 
   let D = null, lastFocus = null;
+  const comHorario = texto => texto.replaceAll('{horario}', D.encontro.horario);
   const overlay = $('#overlay'), sheet = $('#sheet'),
         sheetTitle = $('#sheetTitle'), sheetBody = $('#sheetBody');
 
@@ -43,7 +44,7 @@
 
     if (D.destaque && D.destaque.ativo) {
       const n = $('#notice');
-      n.textContent = D.destaque.texto;
+      n.textContent = comHorario(D.destaque.texto);
       n.href = D.destaque.href || '#cards';
       n.hidden = false;
     }
@@ -70,10 +71,11 @@
     const pills = $('#pills');
     (D.atalhos || []).forEach(t => {
       if (!ok(t.href)) return;
-      const a = el('a', null, t.label);
+      const label = comHorario(t.label);
+      const a = el('a', null, label);
       a.href = t.href;
       if (/^https?:/.test(t.href)) { a.target = '_blank'; a.rel = 'noopener'; }
-      a.addEventListener('click', () => track(t.evento || 'click_pill', { label: t.label }));
+      a.addEventListener('click', () => track(t.evento || 'click_pill', { label }));
       pills.appendChild(a);
     });
 
@@ -154,7 +156,7 @@
     if (tipo === 'guia') {
       const g = D.guia;
       openSheet(g.titulo || fallbackTitulo);
-      sheetBody.appendChild(listaSimples(g.itens));
+      sheetBody.appendChild(listaSimples(g.itens.map(comHorario)));
       sheetBody.appendChild(botaoPill('Quero participar 👟', D.comunidade.whatsapp, 'click_whatsapp'));
     }
 
@@ -165,7 +167,7 @@
       (pr.itens || []).forEach(i => {
         const li = el('li');
         li.appendChild(el('strong', null, i.nome));
-        li.appendChild(el('span', null, i.detalhe));
+        li.appendChild(el('span', null, comHorario(i.detalhe)));
         ul.appendChild(li);
       });
       sheetBody.appendChild(ul);
@@ -181,7 +183,7 @@
         a.href = u.mapsUrl; a.target = '_blank'; a.rel = 'noopener';
         a.addEventListener('click', () => track('click_maps', { unidade: u.nome }));
         li.appendChild(el('strong')).appendChild(a);
-        li.appendChild(el('span', null, u.detalhe));
+        li.appendChild(el('span', null, comHorario(u.detalhe)));
         ul.appendChild(li);
       });
       sheetBody.appendChild(ul);

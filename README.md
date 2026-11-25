@@ -41,10 +41,9 @@ Site estático + uma Netlify Function. Sem build, sem framework, sem dependênci
 
 ## Como editar o conteúdo
 
-**Tudo** — textos, links, cards, microcopy — está em **_data/content.json**.
-Não é necessário mexer em HTML, CSS ou JS para o dia a dia.
+A página pública usa conteúdo estático em `index.html`. As opções de conteúdo abaixo, quando não indicado de outra forma, referem-se aos dados legados em `_data/content.json`.
 
-- **Horário ou endereço:** objeto *encontro* (hoje: todos os sábados, 07:30, Rua Salete Broering Becker).
+- **Horário ou endereço:** na página pública, atualize `index.html`, incluindo os metadados e os dados estruturados (formato `HH:MM`). Nos dados legados, atualize o objeto *encontro* em `_data/content.json`; os textos com `{horario}` usam o valor de *encontro.horario*.
 - **Faixa de destaque do topo:** objeto *destaque*. Use "ativo": false para esconder.
 - **Adicionar ou remover card:** inclua um item no array *cards*. O campo *tipo* aceita:
   - "link" abre a URL do campo *href* em nova aba;
